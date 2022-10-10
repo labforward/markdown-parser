@@ -1,0 +1,18 @@
+# version is the only required setting in a kodiak config.
+# `1` is the only valid setting for this field.
+version = 1
+
+[merge]
+# By default, Kodiak will only act on PRs that have this label.
+automerge_label = "automerge 🚢"
+# Kodiak will not merge a PR with any of these labels.
+blocking_labels = ["wip"]
+# Once a PR is merged, delete the branch. This option behaves like the GitHub
+# repository setting "Automatically delete head branches", which automatically
+# deletes head branches after pull requests are merged.
+delete_branch_on_merge = true
+
+[merge.message]
+# Use the PR title for the merge commit.
+title = "pull_request_title"
+body = "empty"
