@@ -1,0 +1,22 @@
+name: License Checker
+on:
+  pull_request:
+    branches: [develop]
+jobs:
+  license-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2.1.2
+        with:
+          node-version: 16.x
+      - name: Authenticate with GitHub package registry
+        run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.ACCESS_TOKEN }}" >> ~/.npmrc
+      - run: npm install --production
+      - name: Check licenses
+        uses: tangro/actions-license-check@v1.0.7
+        with:
+          allowed-licenses: 'MIT;MIT*;MIT-Hippocratic-1.2;MIT (Hippocratic);ISC;New BSD;BSD;BSD*;Simplified BSD;Apache 2.0;Apache-2.0;Unlicense;CC-BY-4.0;CC-BY-3.0;zlib/libpng license;CC0-1.0;WTFPL;BOOST;BSD Zero Clause License'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_CONTEXT: ${{ toJson(github) }}
