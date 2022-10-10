@@ -1,0 +1,17 @@
+{
+  "[json][javascript][typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  // Needs to be defined on its own for reasons we will never know 🤷‍♂️
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "editor.detectIndentation": false,
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  "editor.wordWrap": "wordWrapColumn",
+  "files.insertFinalNewline": true
+}
