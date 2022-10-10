@@ -1,0 +1,29 @@
+{
+  "name": "@laboperator/laboperator-markdown-parser",
+  "version": "0.0.1",
+  "description": "Extended Markdown parser",
+  "homepage": "https://github.com/labforward/laboperator-markdown-parser#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/labforward/laboperator-markdown-parser.git"
+  },
+  "license": "Apache-2.0",
+  "author": "labforward GmbH",
+  "scripts": {
+    "sort": "sort-package-json ./package.json"
+  },
+  "devDependencies": {
+    "@labforward/config": "^0.0.2",
+    "@labforward/eslint-config-node": "^0.0.2",
+    "eslint": "^8.25.0",
+    "prettier": "^2.7.1",
+    "sort-package-json": "^2.0.0",
+    "typescript": "^4.8.4"
+  },
+  "importSort": {
+    ".js, .ts": {
+      "parser": "typescript",
+      "style": "@labforward/config/import-sort"
+    }
+  }
+}
