@@ -1,0 +1,16 @@
+# VS Code configuration files
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# NPM dependencies
+node_modules/
+
+# macOS
+.DS_Store
+
+# Misc
+dist/
+*.log
