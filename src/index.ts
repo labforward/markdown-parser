@@ -1,2 +1,2 @@
-export { default as md2hast } from "./md2hast";
-export { default as preprocessor } from "./preprocessor";
+export { default as md2hast } from "./md2hast.js";
+export { default as preprocessor } from "./preprocessor.js";

@@ -8,6 +8,8 @@
     "paths": {
       "@src/*": ["src/*"]
     },
+    "module": "Node16",
+    "moduleResolution": "Node16",
     "rootDirs": ["src"],
     "strictNullChecks": true
   },

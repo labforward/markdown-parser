@@ -40,7 +40,7 @@ const disableLazyGrid = (raw: string) => {
     .join("\n");
 };
 
-export default (raw) =>
+export default (raw: string) =>
   disableLazyGrid(raw)
     // self-closing html like <br/> somehow makes every lines which follows afterward
     // be considered part of the html

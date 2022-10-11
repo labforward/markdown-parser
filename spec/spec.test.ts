@@ -1,8 +1,8 @@
 import { unified } from "unified";
 
 const parse = async (raw) => {
-  const md2hast = (await import("./md2hast.js")).default;
-  const preprocessor = (await import("./preprocessor.js")).default;
+  const md2hast = (await import("../src/md2hast.js")).default;
+  const preprocessor = (await import("../src/preprocessor.js")).default;
   const parser = unified().use(md2hast);
 
   return parser.runSync(parser.parse(preprocessor(raw)));
