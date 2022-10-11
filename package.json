@@ -12,9 +12,26 @@
   "scripts": {
     "sort": "sort-package-json ./package.json"
   },
+  "dependencies": {
+    "@types/jest": "^29.1.2",
+    "hast-util-sanitize": "^4.0.0",
+    "lodash": "^4.17.21",
+    "mdast-util-to-hast": "^12.2.4",
+    "micromark-core-commonmark": "^1.0.6",
+    "micromark-factory-space": "^1.0.0",
+    "micromark-util-character": "^1.1.0",
+    "micromark-util-symbol": "^1.0.1",
+    "rehype-raw": "^6.1.1",
+    "rehype-sanitize": "^5.0.1",
+    "remark-gfm": "^3.0.1",
+    "remark-parse": "^10.0.1",
+    "remark-rehype": "^10.1.0",
+    "unified": "^10.1.2"
+  },
   "devDependencies": {
     "@labforward/config": "^0.0.2",
     "@labforward/eslint-config-node": "^0.0.2",
+    "@types/lodash": "^4.14.186",
     "eslint": "^8.25.0",
     "prettier": "^2.7.1",
     "sort-package-json": "^2.0.0",

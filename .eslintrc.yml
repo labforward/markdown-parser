@@ -1,0 +1,7 @@
+extends:
+  - "@labforward/eslint-config-node"
+
+rules:
+  max-statements: off
+  import/extensions: off # module import within node requires the extension to be present
+  @typescript-eslint/no-this-alias: off
