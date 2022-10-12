@@ -1,8 +1,8 @@
 import { unified } from "unified";
 
-const parse = async (raw: string) => {
-  const md2hast = (await import("../src/md2hast.js")).default;
-  const preprocessor = (await import("../src/preprocessor.js")).default;
+import { md2hast, preprocessor } from "./index.js";
+
+const parse = (raw: string) => {
   const parser = unified().use(md2hast);
 
   return parser.runSync(parser.parse(preprocessor(raw)));
@@ -10,9 +10,9 @@ const parse = async (raw: string) => {
 
 describe("Markdown extensions", () => {
   describe("for grid", () => {
-    it("add support for parsing custom grid syntax", async () => {
+    it("add support for parsing custom grid syntax", () => {
       expect(
-        await parse(`Before grid
+        parse(`Before grid
 
 % this is normal text
 
@@ -32,9 +32,9 @@ After grid
       ).toMatchSnapshot();
     });
 
-    it("is able to parse grid without any leading or trailing characters", async () => {
+    it("is able to parse grid without any leading or trailing characters", () => {
       expect(
-        await parse(`%col
+        parse(`%col
   left
 %col
   right
@@ -42,14 +42,14 @@ After grid
       ).toMatchSnapshot();
     });
 
-    it("is able to parse partially defined grid", async () => {
+    it("is able to parse partially defined grid", () => {
       expect(
-        await parse(`%col
+        parse(`%col
 %col`)
       ).toMatchSnapshot();
 
       expect(
-        await parse(
+        parse(
           `###### Syntax examples:
 %col
   \`\`\`yml
@@ -60,9 +60,9 @@ After grid
       ).toMatchSnapshot();
     });
 
-    it("is able to parse deeply nested grid", async () => {
+    it("is able to parse deeply nested grid", () => {
       expect(
-        await parse(`
+        parse(`
 %col
   %col
     %col
@@ -71,9 +71,9 @@ After grid
       ).toMatchSnapshot();
     });
 
-    it("preserve spaces inside code block", async () => {
+    it("preserve spaces inside code block", () => {
       expect(
-        await parse(`%col
+        parse(`%col
   \`\`\`yml
   - label: print
     key: print-button
@@ -84,7 +84,7 @@ After grid
       ).toMatchSnapshot();
 
       expect(
-        await parse(`%col container
+        parse(`%col container
   %col
     \`\`\`yml
     changeReason:
@@ -102,9 +102,9 @@ After grid
   });
 
   describe("for interpolation", () => {
-    it("add support for interpolation syntax", async () => {
+    it("add support for interpolation syntax", () => {
       expect(
-        await parse(`Interpolation can stand alone like the following
+        parse(`Interpolation can stand alone like the following
 
 {{function}}
 
@@ -117,9 +117,9 @@ and appear {{inline|with=argument}} like this
       ).toMatchSnapshot();
     });
 
-    it("add support for bang! interpolation syntax", async () => {
+    it("add support for bang! interpolation syntax", () => {
       expect(
-        await parse(`Bang! Interpolation can stand alone like the following
+        parse(`Bang! Interpolation can stand alone like the following
 
 !{{function}}
 
@@ -132,9 +132,9 @@ and appear !{{inline|with=argument}} like this
       ).toMatchSnapshot();
     });
 
-    it("works inside explicit markdown table", async () => {
+    it("works inside explicit markdown table", () => {
       expect(
-        await parse(`
+        parse(`
 | {{function|argument}} | {{function|argument|argument}} |
 | --------------------- | ------------------------------ |
 | {{function|argument}} | {{function|argument}}          |
@@ -144,9 +144,9 @@ and appear !{{inline|with=argument}} like this
   });
 
   describe("backward compatibility", () => {
-    it("support self closing html tag", async () => {
+    it("support self closing html tag", () => {
       expect(
-        await parse(`<img src="foo.jpg" />
+        parse(`<img src="foo.jpg" />
 <br />
 %col
   left
