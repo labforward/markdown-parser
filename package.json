@@ -12,7 +12,7 @@
   "type": "module",
   "scripts": {
     "build": "del-cli dist && tsc -p tsconfig.json",
-    "dev": "node ./bin/test",
+    "ci:esm": "node ./bin/test",
     "sort": "sort-package-json ./package.json"
   },
   "dependencies": {
