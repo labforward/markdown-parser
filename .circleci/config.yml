@@ -73,10 +73,10 @@ jobs:
       - restore_yarn_cache
       - install_dependencies
       - save_yarn_cache
+      - build_and_run_script
       - run_jest
       - store_jest_results
       - store_jest_artifacts
-      - build_and_run_script
 
 # --------------------
 #   WORKFLOWS

@@ -15,7 +15,7 @@
     "ci:esm": "node ./bin/test",
     "ci:test": "NODE_OPTIONS=--experimental-vm-modules jest --ci --runInBand --reporters=default --reporters=jest-junit",
     "sort": "sort-package-json ./package.json",
-    "test": "NODE_OPTIONS=--experimental-vm-modules jest --runInBand --watch"
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest --runInBand"
   },
   "dependencies": {
     "hast-util-sanitize": "^4.0.0",
