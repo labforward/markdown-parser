@@ -8,7 +8,7 @@
     "paths": {
       "@src/*": ["src/*"]
     },
-    "module": "ES2022", // must be ESx, Node16 or NodeNext to work
+    "module": "Node16", // must be ESx, Node16 or NodeNext to work
     "moduleResolution": "Node16", // must be Node16 or NodeNext to work
     "rootDirs": ["src"],
     "strictNullChecks": true,
