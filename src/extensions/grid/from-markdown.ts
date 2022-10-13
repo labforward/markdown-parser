@@ -1,3 +1,5 @@
+import type { CompileContext, Token } from "mdast-util-from-markdown";
+
 export const enter = {
   grid: onEnterGrid,
   gridProps: onEnterGridProps,
@@ -6,11 +8,12 @@ export const exit = {
   grid: onExitGrid,
 };
 
-function onEnterGrid(token) {
+function onEnterGrid(this: CompileContext, token: Token) {
+  // @ts-ignore TypeScript has an issue with extending existing types from mdast-util-from-markdown, even though it's permissible within the library
   this.enter({ type: "grid", children: [] }, token);
 }
 
-function onEnterGridProps(token) {
+function onEnterGridProps(this: CompileContext, token: Token) {
   const grid = this.stack[this.stack.length - 1];
   const raw = this.sliceSerialize(token);
 
@@ -31,9 +34,10 @@ function onEnterGridProps(token) {
       return { ...prev, [key]: value };
     }, {});
 
+  // @ts-ignore TypeScript has an issue with extending existing types from mdast-util-from-markdown, even though it's permissible within the library
   grid.props = props;
 }
 
-function onExitGrid(token) {
+function onExitGrid(this: CompileContext, token: Token) {
   this.exit(token);
 }

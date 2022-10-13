@@ -1,13 +1,16 @@
-function factoryCharacters(effects, ok, nok) {
+import type { Code, Effects, State } from "micromark-util-types";
+
+function factoryCharacters(effects: Effects, ok: State, nok: State) {
   return charactersWalker;
 
-  function charactersWalker(characters) {
+  function charactersWalker(characters: Array<Function | Code>) {
     return onCharacterCode;
 
-    function onCharacterCode(code) {
+    function onCharacterCode(code: Code) {
       const [expected, ...nextCharacters] = characters;
 
-      if (expected.call ? !expected(code) : code !== expected) return nok(code);
+      if (typeof expected === "function" ? !expected(code) : code !== expected)
+        return nok(code);
 
       effects.consume(code);
 

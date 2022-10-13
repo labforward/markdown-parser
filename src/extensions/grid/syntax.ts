@@ -1,4 +1,12 @@
 import { blankLine } from "micromark-core-commonmark";
+import type {
+  Code,
+  Construct,
+  Effects,
+  Event,
+  State,
+  TokenizeContext,
+} from "micromark-util-types";
 import { codes } from "micromark-util-symbol/codes";
 import { factorySpace } from "micromark-factory-space";
 import { markdownLineEnding } from "micromark-util-character";
@@ -6,14 +14,14 @@ import { types } from "micromark-util-symbol/types";
 
 import factoryCharacters from "../utils/factory-characters.js";
 
-const prefixSize = (events) => {
+const prefixSize = (events: Array<Event>) => {
   const tail = events[events.length - 1];
 
   return tail && tail[1].type === types.linePrefix
     ? tail[2].sliceSerialize(tail[1], true).length
     : 0;
 };
-const gridConstruct = {
+const gridConstruct: Construct = {
   name: "grid",
   tokenize: tokenizeGrid,
   continuation: {
@@ -34,10 +42,15 @@ export default {
   },
 };
 
-function tokenizeGrid(effects, ok, nok) {
+function tokenizeGrid(
+  this: TokenizeContext,
+  effects: Effects,
+  ok: State,
+  nok: State
+) {
   const self = this;
   const indentation = prefixSize(self.events);
-  const cPrecededByPercentSign = (code) =>
+  const cPrecededByPercentSign = (code: Code) =>
     self.previous === codes.percentSign && code === codes.lowercaseC;
 
   return factoryCharacters(
@@ -50,14 +63,15 @@ function tokenizeGrid(effects, ok, nok) {
     )([cPrecededByPercentSign, codes.lowercaseO, codes.lowercaseL])
   )([codes.percentSign, codes.lowercaseC, codes.lowercaseO, codes.lowercaseL]);
 
-  function onGridStart(_code) {
+  function onGridStart(_code: Code) {
     effects.enter("grid", { _container: true });
-    self.containerState.indentation = indentation;
+    // NOTE: the previous line ensures containerState is defined
+    self.containerState!.indentation = indentation;
 
     return factorySpace(effects, onGridPropsStart, types.whitespace);
   }
 
-  function onGridPropsStart(code) {
+  function onGridPropsStart(code: Code) {
     if (code === codes.eof || markdownLineEnding(code)) {
       return onGridContent(code);
     }
@@ -67,7 +81,7 @@ function tokenizeGrid(effects, ok, nok) {
     return onGridProps(code);
   }
 
-  function onGridProps(code) {
+  function onGridProps(code: Code) {
     if (code === codes.eof || markdownLineEnding(code)) {
       return onGridPropsEnd;
     }
@@ -76,18 +90,23 @@ function tokenizeGrid(effects, ok, nok) {
     return onGridProps;
   }
 
-  function onGridPropsEnd(code) {
+  function onGridPropsEnd(code: Code) {
     effects.exit("gridProps");
 
     return onGridContent(code);
   }
 
-  function onGridContent(_code) {
+  function onGridContent(_code: Code) {
     return ok;
   }
 }
 
-function tokenizeGridContinuation(effects, ok, nok) {
+function tokenizeGridContinuation(
+  this: TokenizeContext,
+  effects: Effects,
+  ok: State,
+  nok: State
+) {
   return effects.check(
     blankLine,
     ok,
@@ -95,12 +114,17 @@ function tokenizeGridContinuation(effects, ok, nok) {
   );
 }
 
-function tokenizeIndent(effects, ok, nok) {
+function tokenizeIndent(
+  this: TokenizeContext,
+  effects: Effects,
+  ok: State,
+  nok: State
+) {
   const self = this;
 
   return onIndent;
 
-  function onIndent(code) {
+  function onIndent(code: Code) {
     const current = prefixSize(self.events);
     const maximum = getMaximumIndentation();
 
@@ -122,8 +146,9 @@ function tokenizeIndent(effects, ok, nok) {
     return nok;
   }
 
-  function afterIndent(code) {
-    const expected = self.containerState.indentation;
+  function afterIndent(code: Code) {
+    // we typecast here because we know that this is defined
+    const expected = self.containerState!.indentation as number;
     const actual = prefixSize(self.events);
 
     return expected < actual ? ok(code) : nok(code);
@@ -146,6 +171,6 @@ function tokenizeIndent(effects, ok, nok) {
   }
 }
 
-function tokenizeGridExit(effects) {
+function tokenizeGridExit(effects: Effects) {
   effects.exit("grid");
 }

@@ -28,13 +28,14 @@ const flavouredSchema = merge({}, defaultSchema, {
   },
 });
 
+// FIXME: Typescript throws errors here when the type casting is not present, despite the matching types
 const md2hast: Array<Plugin | PluginTuple> = [
-  md2mdast,
-  gfm,
+  md2mdast as Plugin,
+  gfm as Plugin,
   extensions,
-  [mdast2hast, { allowDangerousHtml: true, handlers }], // @option: allow raw html inside markdown
-  raw, // parse raw html into hast
-  [sanitize, flavouredSchema],
+  [mdast2hast as Plugin, { allowDangerousHtml: true, handlers }] as PluginTuple, // @option: allow raw html inside markdown
+  raw as Plugin, // parse raw html into hast
+  [sanitize, flavouredSchema] as PluginTuple,
 ];
 
 export default md2hast;

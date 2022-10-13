@@ -1,15 +1,15 @@
-/*
- * This file is deliberately written in CommonJS syntax so that it can be required directly from node.
- */
+import type { Processor } from "unified";
+
+import type { FromMarkdown, Syntax } from "./extensions/types/extensions.js";
 import * as grid from "./extensions/grid.js";
 import * as gridcontainer from "./extensions/gridcontainer.js";
 import * as interpolation from "./extensions/interpolation.js";
 
-function extensions() {
+function extensions(this: Processor) {
   const data = this.data();
 
-  const add = (field, value) => {
-    if (data[field]) data[field].push(value);
+  const add = (field: string, value: Syntax | FromMarkdown) => {
+    if (data[field]) (data[field] as Array<Syntax | FromMarkdown>).push(value);
     else data[field] = [value];
   };
 
