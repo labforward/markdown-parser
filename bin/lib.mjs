@@ -11,5 +11,5 @@ const markdown = unified().use(md2hast)
 
 const parsed = markdown.parse(preprocessor(raw))
 
-console.log("Succesfully 💪 parsed 📝 markdown")
-console.log(parsed)
+console.log("Successfully 💪 parsed 📝 markdown")
+console.log(JSON.stringify(parsed, undefined, 2))

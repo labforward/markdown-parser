@@ -1,9 +1,16 @@
+import type {
+  Code,
+  Construct,
+  Effects,
+  State,
+  TokenizeContext,
+} from "micromark-util-types";
 import { codes } from "micromark-util-symbol/codes";
 import { markdownLineEnding, markdownSpace } from "micromark-util-character";
 
 import charactersConstruct from "../utils/characters-construct.js";
 
-const gridContainerConstruct = {
+const gridContainerConstruct: Construct = {
   name: "gridcontainer",
   tokenize: tokenizeGridContainer,
   continuation: {
@@ -18,12 +25,17 @@ export default {
   },
 };
 
-function tokenizeGridContainer(effects, ok, nok) {
+function tokenizeGridContainer(
+  this: TokenizeContext,
+  effects: Effects,
+  ok: State,
+  nok: State
+) {
   const self = this;
 
   return onGridContainerProbable;
 
-  function onGridContainerProbable(code) {
+  function onGridContainerProbable(code: Code) {
     if (isGridContainerOpen()) return nok;
 
     effects.consume(code);
@@ -39,7 +51,7 @@ function tokenizeGridContainer(effects, ok, nok) {
     );
   }
 
-  function onGridContainerStart(_code) {
+  function onGridContainerStart(_code: Code) {
     effects.enter("gridContainer", { _container: true });
 
     return ok;
@@ -59,19 +71,24 @@ function tokenizeGridContainer(effects, ok, nok) {
   }
 }
 
-function tokenizeGridContainerContinuation(effects, ok, nok) {
+function tokenizeGridContainerContinuation(
+  this: TokenizeContext,
+  effects: Effects,
+  ok: State,
+  nok: State
+) {
   const self = this;
   let newlines = 0;
 
   return onContinue;
 
-  function onContinue(code) {
+  function onContinue(code: Code) {
     if (markdownLineEnding(self.previous)) newlines += 1;
 
     return countNewLines(code);
   }
 
-  function countNewLines(code) {
+  function countNewLines(code: Code) {
     if (!markdownLineEnding(code)) return afterNewLines(code);
 
     newlines += 1;
@@ -80,7 +97,7 @@ function tokenizeGridContainerContinuation(effects, ok, nok) {
     return countNewLines;
   }
 
-  function afterNewLines(code) {
+  function afterNewLines(code: Code) {
     if (markdownSpace(code)) return ok;
     if (code === codes.percentSign) {
       if (newlines < 2) return ok;
@@ -91,6 +108,6 @@ function tokenizeGridContainerContinuation(effects, ok, nok) {
   }
 }
 
-function tokenizeGridContainerExit(effects) {
+function tokenizeGridContainerExit(effects: Effects) {
   effects.exit("gridContainer");
 }

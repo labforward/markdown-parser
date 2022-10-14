@@ -40,7 +40,7 @@ const disableLazyGrid = (raw: string) => {
     .join("\n");
 };
 
-export default (raw: string) =>
+const preprocessor = (raw: string) =>
   disableLazyGrid(raw)
     // self-closing html like <br/> somehow makes every lines which follows afterward
     // be considered part of the html
@@ -51,3 +51,5 @@ export default (raw: string) =>
       /(\|\s*{{)((?:[a-zA-Z0-9=\-_]+)(?:\|[a-zA-Z0-9=\-_]+)+)(?=}}\s*\|)/g,
       (_, prefix, formula) => `${prefix}${formula.split("|").join("\\|")}`
     );
+
+export default preprocessor;
