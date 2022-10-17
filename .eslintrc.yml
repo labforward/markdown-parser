@@ -4,4 +4,6 @@ extends:
 rules:
   max-statements: off
   import/extensions: off # module import within node requires the extension to be present
-  @typescript-eslint/no-this-alias: off
+  "@typescript-eslint/no-this-alias": off # required to prevent shadowing of 'this'
+  "@typescript-eslint/no-non-null-assertion": off # required for setting containerState in TokenizeContext
+  "@typescript-eslint/ban-ts-comment": off # if there is some way to maintain type correctness when extending mdast-util-from-markdown, this can be removed

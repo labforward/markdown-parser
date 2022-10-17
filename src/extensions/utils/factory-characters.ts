@@ -3,7 +3,9 @@ import type { Code, Effects, State } from "micromark-util-types";
 function factoryCharacters(effects: Effects, ok: State, nok: State) {
   return charactersWalker;
 
-  function charactersWalker(characters: Array<Function | Code>) {
+  function charactersWalker(
+    characters: Array<Code | number | ((arg0: Code) => boolean)>
+  ) {
     return onCharacterCode;
 
     function onCharacterCode(code: Code) {
