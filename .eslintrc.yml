@@ -1,6 +1,8 @@
 extends:
   - "@labforward/eslint-config-node"
 
+ignorePatterns: ["bin/**/*", "dist/**/*"]
+
 rules:
   max-statements: off
   import/extensions: off # module import within node requires the extension to be present
