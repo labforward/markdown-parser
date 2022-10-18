@@ -24,7 +24,12 @@ commands:
           name: Build & run script
           # ensure the built code is compliant with ESModule syntax with ci:esm
           command: |
-            yarn build && yarn ci:esm
+            yarn build && \
+            if [[ `git status --porcelain` ]]; then \
+            echo "🚨 Make sure to build the parser after making changes."
+            exit 1; \
+            fi \
+            && yarn ci:esm
   run_jest:
     steps:
       - run:
