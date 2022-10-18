@@ -10,6 +10,14 @@
   "license": "Apache-2.0",
   "author": "labforward GmbH",
   "type": "module",
+  "exports": {
+    ".": {
+      "browser": {
+        "default": "./dist/index.js",
+        "require": null
+      }
+    }
+  },
   "scripts": {
     "build": "del-cli dist && tsc -p tsconfig.json",
     "ci:esm": "node ./bin/test",
