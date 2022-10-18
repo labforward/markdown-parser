@@ -1,0 +1,94 @@
+---
+aliases:
+  # --------------------
+  #   ALIASES: Filters
+  # --------------------
+  not_develop_or_main: &not_develop_nor_main
+    filters:
+      branches:
+        ignore:
+          - main
+          - develop
+  # --------------------
+  #   ALIASES: Keys
+  # --------------------
+  yarn_cache_key: &yarn_cache_key yarn-v1-{{ checksum "yarn.lock" }}
+
+# --------------------
+#   COMMANDS
+# --------------------
+commands:
+  build_and_run_script:
+    steps:
+      - run:
+          name: Build & run script
+          # ensure the built code is compliant with ESModule syntax with ci:esm
+          command: |
+            yarn build && \
+            if [[ `git status --porcelain` ]]; then \
+            echo "🚨 Make sure to build the parser after making changes."
+            exit 1; \
+            fi \
+            && yarn ci:esm
+  run_jest:
+    steps:
+      - run:
+          name: Run Tests
+          command: yarn ci:test
+          environment:
+            JEST_JUNIT_OUTPUT_DIR: ./reports/junit/
+  install_dependencies:
+    steps:
+      - run:
+          name: Install Dependencies
+          command: yarn install --frozen-lockfile --cache-folder ~/.cache/yarn
+  save_yarn_cache:
+    steps:
+      - save_cache:
+          name: Save Yarn Package Cache
+          key: *yarn_cache_key
+          paths:
+            - ~/.cache/yarn
+  restore_yarn_cache:
+    steps:
+      - restore_cache:
+          name: Restore Yarn Package Cache
+          keys:
+            - *yarn_cache_key
+  store_jest_results:
+    steps:
+      - store_test_results:
+          path: ./reports/junit/
+  store_jest_artifacts:
+    steps:
+      - store_artifacts:
+          path: ./reports/junit
+
+# --------------------
+#   JOBS
+# --------------------
+version: 2.1
+jobs:
+  test:
+    working_directory: ~/repo
+    docker:
+      - image: cimg/node:16.13.2-browsers
+    steps:
+      - checkout
+      - restore_yarn_cache
+      - install_dependencies
+      - save_yarn_cache
+      - build_and_run_script
+      - run_jest
+      - store_jest_results
+      - store_jest_artifacts
+
+# --------------------
+#   WORKFLOWS
+# --------------------
+workflows:
+  version: 2
+  tests:
+    jobs:
+      - test:
+          <<: *not_develop_nor_main

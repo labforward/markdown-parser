@@ -1,6 +1,8 @@
+import type { CompileContext, Token } from "mdast-util-from-markdown";
+
 export const enter = {
-  bangInterpolation: onEnterBangIntepolation,
-  interpolation: onEnterIntepolation,
+  bangInterpolation: onEnterBangInterpolation,
+  interpolation: onEnterInterpolation,
 };
 
 export const exit = {
@@ -8,9 +10,10 @@ export const exit = {
   interpolation: onExit,
 };
 
-function onEnterBangIntepolation(token) {
+function onEnterBangInterpolation(this: CompileContext, token: Token) {
   this.enter(
     {
+      // @ts-ignore TypeScript has an issue with extending existing types from mdast-util-from-markdown, even though it's permissible within the library
       type: "banginterpolation",
       props: { formula: this.sliceSerialize(token).replace(/\\\|/g, "|") },
       children: [],
@@ -19,9 +22,10 @@ function onEnterBangIntepolation(token) {
   );
 }
 
-function onEnterIntepolation(token) {
+function onEnterInterpolation(this: CompileContext, token: Token) {
   this.enter(
     {
+      // @ts-ignore TypeScript has an issue with extending existing types from mdast-util-from-markdown, even though it's permissible within the library
       type: "interpolation",
       props: { formula: this.sliceSerialize(token).replace(/\\\|/g, "|") },
       children: [],
@@ -30,6 +34,6 @@ function onEnterIntepolation(token) {
   );
 }
 
-function onExit(token) {
+function onExit(this: CompileContext, token: Token) {
   this.exit(token);
 }

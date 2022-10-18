@@ -1,22 +1,29 @@
 name: License Checker
+
 on:
   pull_request:
-    branches: [develop]
+    branches-ignore:
+      - "main"
+
 jobs:
   license-check:
+    if: github.actor != 'dependabot[bot]'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2.1.2
+      - name: Checkout latest code to runner
+        uses: actions/checkout@v3
+
+      - name: Cache Dependencies
+        uses: actions/cache@v3
         with:
-          node-version: 16.x
-      - name: Authenticate with GitHub package registry
-        run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.ACCESS_TOKEN }}" >> ~/.npmrc
-      - run: npm install --production
+          path: "**/node_modules"
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Run yarn install
+        run: yarn install
+
       - name: Check licenses
-        uses: tangro/actions-license-check@v1.0.7
-        with:
-          allowed-licenses: 'MIT;MIT*;MIT-Hippocratic-1.2;MIT (Hippocratic);ISC;New BSD;BSD;BSD*;Simplified BSD;Apache 2.0;Apache-2.0;Unlicense;CC-BY-4.0;CC-BY-3.0;zlib/libpng license;CC0-1.0;WTFPL;BOOST;BSD Zero Clause License'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: |
+          WHITELIST=$(cat ${{ github.workspace }}/config/license-whitelist.yml | paste -sd\; -)
+          yarn license-checker-rseidelsohn --production --direct --excludePrivatePackage --onlyAllow "$WHITELIST" --summary 
+          echo "✅  All licenses are compliant."

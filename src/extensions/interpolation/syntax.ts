@@ -1,6 +1,7 @@
+import type { Code, Effects, State } from "micromark-util-types";
 import { codes } from "micromark-util-symbol/codes";
 
-const validCode = (code) =>
+const validCode = (code: Code) =>
   code && /[a-zA-Z0-9=\-_]/.test(String.fromCharCode(code));
 const interpolationConstruct = {
   name: "interpolation",
@@ -14,13 +15,13 @@ export default {
   },
 };
 
-function tokenizeInterpolation(effects, ok, nok) {
+function tokenizeInterpolation(effects: Effects, ok: State, nok: State) {
   let type = "interpolation";
   let markers = 0;
 
   return onInterpolationStart;
 
-  function onInterpolationStart(code) {
+  function onInterpolationStart(code: Code) {
     if (code === codes.exclamationMark) {
       if (type === "bangInterpolation") return nok;
 
@@ -46,7 +47,7 @@ function tokenizeInterpolation(effects, ok, nok) {
     return nok;
   }
 
-  function onInterpolationFormula(code) {
+  function onInterpolationFormula(code: Code) {
     if (code === codes.rightCurlyBrace) {
       effects.exit(type);
 
@@ -70,7 +71,7 @@ function tokenizeInterpolation(effects, ok, nok) {
     return nok;
   }
 
-  function onInterpolationEscapedFormula(code) {
+  function onInterpolationEscapedFormula(code: Code) {
     if (code === codes.verticalBar) {
       effects.consume(code);
 
@@ -80,7 +81,7 @@ function tokenizeInterpolation(effects, ok, nok) {
     return nok;
   }
 
-  function onInterpolationEnd(code) {
+  function onInterpolationEnd(code: Code) {
     if (code === codes.rightCurlyBrace) {
       effects.consume(code);
       markers -= 1;
