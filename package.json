@@ -12,8 +12,8 @@
   "type": "module",
   "exports": {
     ".": {
-      "default": "./dist/index.js",
-      "require": null
+      "require": null,
+      "default": "./dist/index.js"
     }
   },
   "main": "dist/index.js",
