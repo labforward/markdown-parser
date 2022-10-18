@@ -12,12 +12,11 @@
   "type": "module",
   "exports": {
     ".": {
-      "browser": {
-        "default": "./dist/index.js",
-        "require": null
-      }
+      "default": "./dist/index.js",
+      "require": null
     }
   },
+  "main": "dist/index.js",
   "scripts": {
     "build": "del-cli dist && tsc -p tsconfig.json",
     "ci:esm": "node ./bin/test",
