@@ -16,6 +16,8 @@ export default {
 function tokenizeInterpolation(effects, ok, nok) {
     var type = "interpolation";
     var markers = 0;
+    // We add a dummy event here in order to be able to consume codes
+    effects.enter("void");
     return onInterpolationStart;
     function onInterpolationStart(code) {
         if (code === codes.exclamationMark) {
@@ -28,17 +30,27 @@ function tokenizeInterpolation(effects, ok, nok) {
         if (code === codes.leftCurlyBrace) {
             effects.consume(code);
             markers += 1;
+            // this if statement needs to appear here, because we shouldn't
+            // return the callback without consuming the character
+            if (markers === 2) {
+                // Exit the dummy event, enter proper interpolation
+                effects.exit("void");
+                effects.enter(type);
+                return onInterpolationFormula;
+            }
             return onInterpolationStart;
         }
-        if (markers === 2) {
-            effects.enter(type);
-            return onInterpolationFormula;
-        }
-        return nok;
+        // return nok(code) instead of nok to ensure the wrong
+        // character is also consumed
+        return nok(code);
     }
     function onInterpolationFormula(code) {
         if (code === codes.rightCurlyBrace) {
+            // When we encounter '}', exit interpolation,
+            // enter the dummy event to consume the character
             effects.exit(type);
+            effects.enter("void");
+            effects.consume(code);
             return onInterpolationEnd;
         }
         if (validCode(code) || code === codes.verticalBar) {
@@ -51,24 +63,24 @@ function tokenizeInterpolation(effects, ok, nok) {
             effects.consume(code);
             return onInterpolationEscapedFormula;
         }
-        return nok;
+        return nok(code);
     }
     function onInterpolationEscapedFormula(code) {
         if (code === codes.verticalBar) {
             effects.consume(code);
             return onInterpolationFormula;
         }
-        return nok;
+        return nok(code);
     }
     function onInterpolationEnd(code) {
+        // if the final code is '}', interpolation is complete,
+        // if it is anything else, we abort with nok
         if (code === codes.rightCurlyBrace) {
             effects.consume(code);
-            markers -= 1;
-            if (markers)
-                return onInterpolationEnd;
+            effects.exit("void");
             return ok;
         }
-        return nok;
+        return nok(code);
     }
 }
 //# sourceMappingURL=syntax.js.map
