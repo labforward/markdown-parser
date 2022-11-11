@@ -87,7 +87,7 @@ function tokenizeGrid(
 
   function onGridProps(code: Code) {
     if (code === codes.eof || markdownLineEnding(code)) {
-      return onGridPropsEnd;
+      return onGridPropsEnd(code);
     }
 
     effects.consume(code);
