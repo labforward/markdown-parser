@@ -20,7 +20,7 @@ function tokenizeInterpolation(effects: Effects, ok: State, nok: State) {
   let markers = 0;
 
   // We add a dummy event here in order to be able to consume codes
-  effects.enter("void");
+  effects.enter("interpolationTemp");
 
   return onInterpolationStart;
 
@@ -42,7 +42,7 @@ function tokenizeInterpolation(effects: Effects, ok: State, nok: State) {
       // return the callback without consuming the character
       if (markers === 2) {
         // Exit the dummy event, enter proper interpolation
-        effects.exit("void");
+        effects.exit("interpolationTemp");
         effects.enter(type);
 
         return onInterpolationFormula;
@@ -61,7 +61,7 @@ function tokenizeInterpolation(effects: Effects, ok: State, nok: State) {
       // When we encounter '}', exit interpolation,
       // enter the dummy event to consume the character
       effects.exit(type);
-      effects.enter("void");
+      effects.enter("interpolationTemp");
       effects.consume(code);
 
       return onInterpolationEnd;
@@ -99,7 +99,7 @@ function tokenizeInterpolation(effects: Effects, ok: State, nok: State) {
     // if it is anything else, we abort with nok
     if (code === codes.rightCurlyBrace) {
       effects.consume(code);
-      effects.exit("void");
+      effects.exit("interpolationTemp");
 
       return ok;
     }

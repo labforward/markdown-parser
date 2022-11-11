@@ -38,6 +38,12 @@ function tokenizeGridContainer(
   function onGridContainerProbable(code: Code) {
     if (isGridContainerOpen()) return nok;
 
+    // For some reason, this cannot be in onGridContainerStart,
+    // as it prevents the character from being consumed in "ok"
+    effects.enter("gridContainer", { _container: true });
+    // Add a temp event for the percent sign so it's not part
+    // of the grid container
+    effects.enter("gridContainerPercentSign");
     effects.consume(code);
 
     return effects.check(
@@ -51,10 +57,9 @@ function tokenizeGridContainer(
     );
   }
 
-  function onGridContainerStart(_code: Code) {
-    effects.enter("gridContainer", { _container: true });
-
-    return ok;
+  function onGridContainerStart(code: Code) {
+    effects.exit("gridContainerPercentSign");
+    return ok(code);
   }
 
   function isGridContainerOpen() {
@@ -91,20 +96,22 @@ function tokenizeGridContainerContinuation(
   function countNewLines(code: Code) {
     if (!markdownLineEnding(code)) return afterNewLines(code);
 
+    effects.enter("gridContainerNewline");
     newlines += 1;
     effects.consume(code);
+    effects.exit("gridContainerNewline");
 
     return countNewLines;
   }
 
   function afterNewLines(code: Code) {
-    if (markdownSpace(code)) return ok;
+    if (markdownSpace(code)) return ok(code);
     if (code === codes.percentSign) {
-      if (newlines < 2) return ok;
-      else return nok;
+      if (newlines < 2) return ok(code);
+      else return nok(code);
     }
 
-    return nok;
+    return nok(code);
   }
 }
 

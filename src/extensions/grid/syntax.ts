@@ -53,6 +53,12 @@ function tokenizeGrid(
   const cPrecededByPercentSign = (code: Code) =>
     self.previous === codes.percentSign && code === codes.lowercaseC;
 
+  effects.enter("grid", { _container: true });
+  // NOTE: the previous line ensures containerState is defined
+  self.containerState!.indentation = indentation;
+
+  effects.enter("gridPrefix");
+
   return factoryCharacters(
     effects,
     onGridStart,
@@ -64,9 +70,7 @@ function tokenizeGrid(
   )([codes.percentSign, codes.lowercaseC, codes.lowercaseO, codes.lowercaseL]);
 
   function onGridStart(_code: Code) {
-    effects.enter("grid", { _container: true });
-    // NOTE: the previous line ensures containerState is defined
-    self.containerState!.indentation = indentation;
+    effects.exit("gridPrefix");
 
     return factorySpace(effects, onGridPropsStart, types.whitespace);
   }
@@ -96,8 +100,8 @@ function tokenizeGrid(
     return onGridContent(code);
   }
 
-  function onGridContent(_code: Code) {
-    return ok;
+  function onGridContent(code: Code) {
+    return ok(code);
   }
 }
 

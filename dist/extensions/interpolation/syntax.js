@@ -17,7 +17,7 @@ function tokenizeInterpolation(effects, ok, nok) {
     var type = "interpolation";
     var markers = 0;
     // We add a dummy event here in order to be able to consume codes
-    effects.enter("void");
+    effects.enter("interpolationTemp");
     return onInterpolationStart;
     function onInterpolationStart(code) {
         if (code === codes.exclamationMark) {
@@ -34,7 +34,7 @@ function tokenizeInterpolation(effects, ok, nok) {
             // return the callback without consuming the character
             if (markers === 2) {
                 // Exit the dummy event, enter proper interpolation
-                effects.exit("void");
+                effects.exit("interpolationTemp");
                 effects.enter(type);
                 return onInterpolationFormula;
             }
@@ -49,7 +49,7 @@ function tokenizeInterpolation(effects, ok, nok) {
             // When we encounter '}', exit interpolation,
             // enter the dummy event to consume the character
             effects.exit(type);
-            effects.enter("void");
+            effects.enter("interpolationTemp");
             effects.consume(code);
             return onInterpolationEnd;
         }
@@ -77,7 +77,7 @@ function tokenizeInterpolation(effects, ok, nok) {
         // if it is anything else, we abort with nok
         if (code === codes.rightCurlyBrace) {
             effects.consume(code);
-            effects.exit("void");
+            effects.exit("interpolationTemp");
             return ok;
         }
         return nok(code);
