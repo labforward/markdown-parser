@@ -20,7 +20,7 @@ function tokenizeGridContainer(effects, ok, nok) {
     return onGridContainerProbable;
     function onGridContainerProbable(code) {
         if (isGridContainerOpen())
-            return nok;
+            return nok(code);
         // For some reason, this cannot be in onGridContainerStart,
         // as it prevents the character from being consumed in "ok"
         effects.enter("gridContainer", { _container: true });

@@ -85,7 +85,7 @@ function tokenizeIndent(effects, ok, nok) {
         // already have the correct amount of indentation consumed
         if (maximum === current)
             return afterIndent(code);
-        return nok;
+        return nok(code);
     }
     function afterIndent(code) {
         // we typecast here because we know that this is defined

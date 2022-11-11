@@ -147,7 +147,7 @@ function tokenizeIndent(
     // already have the correct amount of indentation consumed
     if (maximum === current) return afterIndent(code);
 
-    return nok;
+    return nok(code);
   }
 
   function afterIndent(code: Code) {

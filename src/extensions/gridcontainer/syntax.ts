@@ -36,7 +36,7 @@ function tokenizeGridContainer(
   return onGridContainerProbable;
 
   function onGridContainerProbable(code: Code) {
-    if (isGridContainerOpen()) return nok;
+    if (isGridContainerOpen()) return nok(code);
 
     // For some reason, this cannot be in onGridContainerStart,
     // as it prevents the character from being consumed in "ok"
