@@ -6,22 +6,6 @@ const raw = `
   ***bold***
   1. list 1
   2. list 2
-
-  # TEST INTERPOLATION
-
-  ${''/* this is valid interpolation */}
-  {{interpolation}}
-
-  !{{bangInterpolation}}
-
-  ${''/* this is regular text */}
-  {{f
-
-  {{f}x
-
-  {f}
-
-  !!{}
 `
 const markdown = unified().use(md2hast)
 
