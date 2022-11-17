@@ -20,7 +20,13 @@ function tokenizeGridContainer(effects, ok, nok) {
     return onGridContainerProbable;
     function onGridContainerProbable(code) {
         if (isGridContainerOpen())
-            return nok;
+            return nok(code);
+        // For some reason, this cannot be in onGridContainerStart,
+        // as it prevents the character from being consumed in "ok"
+        effects.enter("gridContainer", { _container: true });
+        // Add a temp event for the percent sign so it's not part
+        // of the grid container
+        effects.enter("gridContainerPercentSign");
         effects.consume(code);
         return effects.check(charactersConstruct([
             codes.lowercaseC,
@@ -28,9 +34,9 @@ function tokenizeGridContainer(effects, ok, nok) {
             codes.lowercaseL,
         ]), onGridContainerStart, nok);
     }
-    function onGridContainerStart(_code) {
-        effects.enter("gridContainer", { _container: true });
-        return ok;
+    function onGridContainerStart(code) {
+        effects.exit("gridContainerPercentSign");
+        return ok(code);
     }
     function isGridContainerOpen() {
         for (var index = self.events.length - 1; index >= 0; index -= 1) {
@@ -57,20 +63,22 @@ function tokenizeGridContainerContinuation(effects, ok, nok) {
     function countNewLines(code) {
         if (!markdownLineEnding(code))
             return afterNewLines(code);
+        effects.enter("gridContainerNewline");
         newlines += 1;
         effects.consume(code);
+        effects.exit("gridContainerNewline");
         return countNewLines;
     }
     function afterNewLines(code) {
         if (markdownSpace(code))
-            return ok;
+            return ok(code);
         if (code === codes.percentSign) {
             if (newlines < 2)
-                return ok;
+                return ok(code);
             else
-                return nok;
+                return nok(code);
         }
-        return nok;
+        return nok(code);
     }
 }
 function tokenizeGridContainerExit(effects) {

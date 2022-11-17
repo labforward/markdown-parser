@@ -15,6 +15,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 
+- [[WFE-303]](https://labforward.atlassian.net/browse/WFE-303) [Deployment & Maintenance] Rewrite Markdown parser extensions to work in Webpack dev mode
+
 ### Deprecated
 
 ### Removed
