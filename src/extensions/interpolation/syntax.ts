@@ -26,7 +26,7 @@ function tokenizeInterpolation(effects: Effects, ok: State, nok: State) {
 
   function onInterpolationStart(code: Code) {
     if (code === codes.exclamationMark) {
-      if (type === "bangInterpolation") return nok;
+      if (type === "bangInterpolation") return nok(code);
 
       type = "bangInterpolation";
       effects.consume(code);
