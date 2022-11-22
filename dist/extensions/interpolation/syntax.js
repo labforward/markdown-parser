@@ -22,7 +22,7 @@ function tokenizeInterpolation(effects, ok, nok) {
     function onInterpolationStart(code) {
         if (code === codes.exclamationMark) {
             if (type === "bangInterpolation")
-                return nok;
+                return nok(code);
             type = "bangInterpolation";
             effects.consume(code);
             return onInterpolationStart;
