@@ -35,11 +35,13 @@ function tokenizeGrid(effects, ok, nok) {
     var cPrecededByPercentSign = function (code) {
         return self.previous === codes.percentSign && code === codes.lowercaseC;
     };
+    effects.enter("grid", { _container: true });
+    // NOTE: the previous line ensures containerState is defined
+    self.containerState.indentation = indentation;
+    effects.enter("gridPrefix");
     return factoryCharacters(effects, onGridStart, factoryCharacters(effects, onGridStart, nok)([cPrecededByPercentSign, codes.lowercaseO, codes.lowercaseL]))([codes.percentSign, codes.lowercaseC, codes.lowercaseO, codes.lowercaseL]);
     function onGridStart(_code) {
-        effects.enter("grid", { _container: true });
-        // NOTE: the previous line ensures containerState is defined
-        self.containerState.indentation = indentation;
+        effects.exit("gridPrefix");
         return factorySpace(effects, onGridPropsStart, types.whitespace);
     }
     function onGridPropsStart(code) {
@@ -51,7 +53,7 @@ function tokenizeGrid(effects, ok, nok) {
     }
     function onGridProps(code) {
         if (code === codes.eof || markdownLineEnding(code)) {
-            return onGridPropsEnd;
+            return onGridPropsEnd(code);
         }
         effects.consume(code);
         return onGridProps;
@@ -60,8 +62,8 @@ function tokenizeGrid(effects, ok, nok) {
         effects.exit("gridProps");
         return onGridContent(code);
     }
-    function onGridContent(_code) {
-        return ok;
+    function onGridContent(code) {
+        return ok(code);
     }
 }
 function tokenizeGridContinuation(effects, ok, nok) {
@@ -83,7 +85,7 @@ function tokenizeIndent(effects, ok, nok) {
         // already have the correct amount of indentation consumed
         if (maximum === current)
             return afterIndent(code);
-        return nok;
+        return nok(code);
     }
     function afterIndent(code) {
         // we typecast here because we know that this is defined
