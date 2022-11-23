@@ -24,6 +24,6 @@ jobs:
 
       - name: Check licenses
         run: |
-          WHITELIST=$(cat ${{ github.workspace }}/config/license-whitelist.yml | paste -sd\; -)
+          WHITELIST=$(cat ${{ github.workspace }}/license-whitelist.yml | paste -sd\; -)
           yarn license-checker-rseidelsohn --production --direct --excludePrivatePackage --onlyAllow "$WHITELIST" --summary 
           echo "✅  All licenses are compliant."
