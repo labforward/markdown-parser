@@ -55,7 +55,7 @@
     "@types/jest": "^29.2.2",
     "@types/lodash": "^4.14.189",
     "del-cli": "^5.0.0",
-    "eslint": "^8.25.0",
+    "eslint": "^8.28.0",
     "husky": "^8.0.2",
     "jest": "^29.3.1",
     "jest-junit": "^14.0.1",
