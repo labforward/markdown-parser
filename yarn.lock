@@ -3223,10 +3223,10 @@ levn@^0.4.1:
     prelude-ls "^1.2.1"
     type-check "~0.4.0"
 
-license-checker-rseidelsohn@^3.2.1:
-  version "3.2.1"
-  resolved "https://registry.yarnpkg.com/license-checker-rseidelsohn/-/license-checker-rseidelsohn-3.2.1.tgz#516126e7b725315714b1dbca76c69454bc070a51"
-  integrity sha512-ve5mM46nWpoEnDodffHZa2BfF6ky+5lNLAYuLCaEiMV7pmccVBhUR3iOTSctNoa0QVNGI4WY0/y+gRyTY9jBCw==
+license-checker-rseidelsohn@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/license-checker-rseidelsohn/-/license-checker-rseidelsohn-4.0.0.tgz#43c9cd15f6e5e96e59db87a02edf76d2fa3a7de1"
+  integrity sha512-gOOdp7xU0xiOGpP83fOm1Zj/5SxBhBK0hVp1XUll+JWEkB/exUXD2z+RTat/VNVLs9mDnP4gXOcOMqtC4tOkFQ==
   dependencies:
     chalk "4.1.2"
     debug "^4.3.4"

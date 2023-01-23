@@ -13,6 +13,10 @@ jobs:
       - name: Checkout latest code to runner
         uses: actions/checkout@v3
 
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: ".nvmrc"
+
       - name: Cache Dependencies
         uses: actions/cache@v3
         with:
@@ -25,5 +29,5 @@ jobs:
       - name: Check licenses
         run: |
           WHITELIST=$(cat ${{ github.workspace }}/license-whitelist.yml | paste -sd\; -)
-          yarn license-checker-rseidelsohn --production --direct --excludePrivatePackage --onlyAllow "$WHITELIST" --summary 
+          yarn license-checker-rseidelsohn --production --direct --excludePrivatePackage --onlyAllow "$WHITELIST" --summary
           echo "✅  All licenses are compliant."

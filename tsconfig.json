@@ -8,8 +8,8 @@
     "paths": {
       "@src/*": ["src/*"]
     },
-    "module": "Node16", // must be ESx, Node16 or NodeNext to work
-    "moduleResolution": "Node16", // must be Node16 or NodeNext to work
+    "module": "NodeNext", // support ESM
+    "moduleResolution": "NodeNext", // support ESM
     "rootDirs": ["src"],
     "strictNullChecks": true
   },
