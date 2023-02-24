@@ -20,13 +20,20 @@ const handlers: Handlers = {
 };
 
 const flavouredSchema = merge({}, defaultSchema, {
-  tagNames: ["gridcontainer", "grid", "banginterpolation", "interpolation"],
   attributes: {
     grid: ["container", "card", "xs", "sm", "md", "lg", "xl"],
     banginterpolation: ["formula"],
     interpolation: ["formula"],
   },
 });
+
+flavouredSchema.tagNames = [
+  ...(flavouredSchema.tagNames || []),
+  "gridcontainer",
+  "grid",
+  "banginterpolation",
+  "interpolation",
+];
 
 // FIXME: Typescript throws errors here when the type casting is not present, despite the matching types
 const md2hast: Array<Plugin | PluginTuple> = [
