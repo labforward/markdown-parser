@@ -924,6 +924,69 @@ exports[`Markdown extensions for grid add support for parsing custom grid syntax
 }
 `;
 
+exports[`Markdown extensions for grid ignores incorrect grid like content 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "position": {
+            "end": {
+              "column": 6,
+              "line": 6,
+              "offset": 42,
+            },
+            "start": {
+              "column": 1,
+              "line": 1,
+              "offset": 0,
+            },
+          },
+          "type": "text",
+          "value": "% col
+orful
+%clo
+wn drinking
+%co
+fee",
+        },
+      ],
+      "position": {
+        "end": {
+          "column": 6,
+          "line": 6,
+          "offset": 42,
+        },
+        "start": {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "properties": {},
+      "tagName": "p",
+      "type": "element",
+    },
+  ],
+  "data": {
+    "quirksMode": false,
+  },
+  "position": {
+    "end": {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+    "start": {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "type": "root",
+}
+`;
+
 exports[`Markdown extensions for grid is able to parse deeply nested grid 1`] = `
 {
   "children": [
@@ -2259,6 +2322,64 @@ exports[`Markdown extensions for interpolation add support for interpolation syn
           "column": 1,
           "line": 9,
           "offset": 105,
+        },
+      },
+      "properties": {},
+      "tagName": "p",
+      "type": "element",
+    },
+  ],
+  "data": {
+    "quirksMode": false,
+  },
+  "position": {
+    "end": {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+    "start": {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "type": "root",
+}
+`;
+
+exports[`Markdown extensions for interpolation ignores unmatched brackets 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "position": {
+            "end": {
+              "column": 33,
+              "line": 1,
+              "offset": 32,
+            },
+            "start": {
+              "column": 1,
+              "line": 1,
+              "offset": 0,
+            },
+          },
+          "type": "text",
+          "value": "{{f}  {f}  {{f !{{f}  !{f}  !{{f",
+        },
+      ],
+      "position": {
+        "end": {
+          "column": 33,
+          "line": 1,
+          "offset": 32,
+        },
+        "start": {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
         },
       },
       "properties": {},
