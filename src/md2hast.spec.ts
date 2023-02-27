@@ -9,7 +9,7 @@ const parse = (raw: string) => {
 };
 
 describe("Markdown", () => {
-  it("supports heading", () => {
+  it("supports basic markdown", () => {
     expect(
       parse(`# Heading 1
 ## Heading 2

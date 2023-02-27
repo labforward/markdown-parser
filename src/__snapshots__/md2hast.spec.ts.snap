@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Markdown supports heading 1`] = `
+exports[`Markdown supports basic markdown 1`] = `
 {
   "children": [
     {
