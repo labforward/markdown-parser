@@ -99,6 +99,18 @@ After grid
     !{{stringField}}`)
       ).toMatchSnapshot();
     });
+
+    it("ignores incorrect grid like content", () => {
+      expect(
+        parse(`% col
+  orful
+%clo
+  wn drinking
+%co
+  fee
+  `)
+      ).toMatchSnapshot();
+    });
   });
 
   describe("for interpolation", () => {
@@ -140,6 +152,10 @@ and appear !{{inline|with=argument}} like this
 | {{function|argument}} | {{function|argument}}          |
 `)
       ).toMatchSnapshot();
+    });
+
+    it("ignores unmatched brackets", () => {
+      expect(parse("{{f}  {f}  {{f !{{f}  !{f}  !{{f")).toMatchSnapshot();
     });
   });
 

@@ -1,3 +1,12 @@
+var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
+};
 import { all } from "mdast-util-to-hast";
 import { defaultSchema } from "hast-util-sanitize";
 import gfm from "remark-gfm";
@@ -16,13 +25,18 @@ var handlers = {
     interpolation: function (h, node) { return h(node, "interpolation", node.props); },
 };
 var flavouredSchema = merge({}, defaultSchema, {
-    tagNames: ["gridcontainer", "grid", "banginterpolation", "interpolation"],
     attributes: {
         grid: ["container", "card", "xs", "sm", "md", "lg", "xl"],
         banginterpolation: ["formula"],
         interpolation: ["formula"],
     },
 });
+flavouredSchema.tagNames = __spreadArray(__spreadArray([], (flavouredSchema.tagNames || []), true), [
+    "gridcontainer",
+    "grid",
+    "banginterpolation",
+    "interpolation",
+], false);
 // FIXME: Typescript throws errors here when the type casting is not present, despite the matching types
 var md2hast = [
     md2mdast,
