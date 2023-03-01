@@ -1,6 +1,6 @@
 {
-  "name": "@laboperator/laboperator-markdown-parser",
-  "version": "0.0.1",
+  "name": "@labforward/markdown-parser",
+  "version": "1.0.0",
   "description": "Extended Markdown parser",
   "homepage": "https://github.com/labforward/laboperator-markdown-parser#readme",
   "repository": {
