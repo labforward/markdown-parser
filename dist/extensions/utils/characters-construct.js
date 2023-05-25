@@ -4,8 +4,8 @@ function charactersConstruct(characters) {
         return factoryCharacters(effects, ok, nok)(characters);
     }
     return {
-        tokenize: tokenizeCharactersConstruct,
         partial: true,
+        tokenize: tokenizeCharactersConstruct,
     };
 }
 export default charactersConstruct;

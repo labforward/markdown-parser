@@ -1,1 +1,1 @@
-{"version":3,"file":"interpolation.js","sourceRoot":"","sources":["../../src/extensions/interpolation.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,OAAO,IAAI,MAAM,EAAE,MAAM,2BAA2B,CAAC;AAC9D,OAAO,KAAK,YAAY,MAAM,kCAAkC,CAAC"}
+{"version":3,"file":"interpolation.js","sourceRoot":"","sources":["../../src/extensions/interpolation.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,YAAY,MAAM,kCAAkC,CAAC;AACjE,OAAO,EAAE,OAAO,IAAI,MAAM,EAAE,MAAM,2BAA2B,CAAC"}

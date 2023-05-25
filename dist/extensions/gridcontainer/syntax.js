@@ -1,14 +1,14 @@
 var _a;
-import { codes } from "micromark-util-symbol/codes";
 import { markdownLineEnding, markdownSpace } from "micromark-util-character";
-import charactersConstruct from "../utils/characters-construct.js";
+import { codes } from "micromark-util-symbol/codes";
+import charactersConstruct from "../../extensions/utils/characters-construct.js";
 var gridContainerConstruct = {
-    name: "gridcontainer",
-    tokenize: tokenizeGridContainer,
     continuation: {
         tokenize: tokenizeGridContainerContinuation,
     },
     exit: tokenizeGridContainerExit,
+    name: "gridcontainer",
+    tokenize: tokenizeGridContainer,
 };
 export default {
     document: (_a = {},

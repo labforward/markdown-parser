@@ -1,10 +1,10 @@
 var _a;
 import { blankLine } from "micromark-core-commonmark";
-import { codes } from "micromark-util-symbol/codes";
 import { factorySpace } from "micromark-factory-space";
 import { markdownLineEnding } from "micromark-util-character";
+import { codes } from "micromark-util-symbol/codes";
 import { types } from "micromark-util-symbol/types";
-import factoryCharacters from "../utils/factory-characters.js";
+import factoryCharacters from "../../extensions/utils/factory-characters.js";
 var prefixSize = function (events) {
     var tail = events[events.length - 1];
     return tail && tail[1].type === types.linePrefix
@@ -12,16 +12,16 @@ var prefixSize = function (events) {
         : 0;
 };
 var gridConstruct = {
-    name: "grid",
-    tokenize: tokenizeGrid,
     continuation: {
         tokenize: tokenizeGridContinuation,
     },
     exit: tokenizeGridExit,
+    name: "grid",
+    tokenize: tokenizeGrid,
 };
 var indentConstruct = {
-    tokenize: tokenizeIndent,
     partial: true,
+    tokenize: tokenizeIndent,
 };
 export default {
     document: (_a = {},
