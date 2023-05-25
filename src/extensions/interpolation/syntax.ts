@@ -1,5 +1,5 @@
-import type { Code, Effects, State } from "micromark-util-types";
 import { codes } from "micromark-util-symbol/codes";
+import type { Code, Effects, State } from "micromark-util-types";
 
 const validCode = (code: Code) =>
   code && /[a-zA-Z0-9=\-_]/.test(String.fromCharCode(code));

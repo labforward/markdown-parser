@@ -7,20 +7,20 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
     }
     return to.concat(ar || Array.prototype.slice.call(from));
 };
-import { all } from "mdast-util-to-hast";
 import { defaultSchema } from "hast-util-sanitize";
+import merge from "lodash/merge.js";
+import { all } from "mdast-util-to-hast";
+import raw from "rehype-raw";
+import sanitize from "rehype-sanitize";
 import gfm from "remark-gfm";
 import md2mdast from "remark-parse";
 import mdast2hast from "remark-rehype";
-import merge from "lodash/merge.js";
-import raw from "rehype-raw";
-import sanitize from "rehype-sanitize";
 import extensions from "./extensions.js";
 var handlers = {
+    grid: function (h, node) { return h(node, "grid", node.props, all(h, node)); },
     gridcontainer: function (h, node) {
         return h(node, "gridcontainer", node.props, all(h, node));
     },
-    grid: function (h, node) { return h(node, "grid", node.props, all(h, node)); },
     banginterpolation: function (h, node) { return h(node, "banginterpolation", node.props); },
     interpolation: function (h, node) { return h(node, "interpolation", node.props); },
 };

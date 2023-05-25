@@ -1,4 +1,8 @@
 import { blankLine } from "micromark-core-commonmark";
+import { factorySpace } from "micromark-factory-space";
+import { markdownLineEnding } from "micromark-util-character";
+import { codes } from "micromark-util-symbol/codes";
+import { types } from "micromark-util-symbol/types";
 import type {
   Code,
   Construct,
@@ -7,12 +11,8 @@ import type {
   State,
   TokenizeContext,
 } from "micromark-util-types";
-import { codes } from "micromark-util-symbol/codes";
-import { factorySpace } from "micromark-factory-space";
-import { markdownLineEnding } from "micromark-util-character";
-import { types } from "micromark-util-symbol/types";
 
-import factoryCharacters from "../utils/factory-characters.js";
+import factoryCharacters from "@/extensions/utils/factory-characters.js";
 
 const prefixSize = (events: Array<Event>) => {
   const tail = events[events.length - 1];
@@ -22,17 +22,17 @@ const prefixSize = (events: Array<Event>) => {
     : 0;
 };
 const gridConstruct: Construct = {
-  name: "grid",
-  tokenize: tokenizeGrid,
   continuation: {
     tokenize: tokenizeGridContinuation,
   },
   exit: tokenizeGridExit,
+  name: "grid",
+  tokenize: tokenizeGrid,
 };
 
 const indentConstruct = {
-  tokenize: tokenizeIndent,
   partial: true,
+  tokenize: tokenizeIndent,
 };
 
 export default {

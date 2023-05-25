@@ -1,9 +1,9 @@
 import type { Processor } from "unified";
 
-import type { FromMarkdown, Syntax } from "./extensions/types/extensions.js";
 import * as grid from "./extensions/grid.js";
 import * as gridcontainer from "./extensions/gridcontainer.js";
 import * as interpolation from "./extensions/interpolation.js";
+import type { FromMarkdown, Syntax } from "./extensions/types/extensions.js";
 
 function extensions(this: Processor) {
   const data = this.data();

@@ -14,8 +14,8 @@ function charactersConstruct(
   }
 
   return {
-    tokenize: tokenizeCharactersConstruct,
     partial: true,
+    tokenize: tokenizeCharactersConstruct,
   };
 }
 

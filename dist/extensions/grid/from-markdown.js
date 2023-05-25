@@ -18,7 +18,7 @@ export var exit = {
 };
 function onEnterGrid(token) {
     // @ts-ignore TypeScript has an issue with extending existing types from mdast-util-from-markdown, even though it's permissible within the library
-    this.enter({ type: "grid", children: [] }, token);
+    this.enter({ children: [], type: "grid" }, token);
 }
 function onEnterGridProps(token) {
     var grid = this.stack[this.stack.length - 1];

@@ -1,20 +1,21 @@
-import { all } from "mdast-util-to-hast";
 import { defaultSchema } from "hast-util-sanitize";
-import gfm from "remark-gfm";
-import type { Handlers } from "mdast-util-to-hast";
-import md2mdast from "remark-parse";
-import mdast2hast from "remark-rehype";
 import merge from "lodash/merge.js";
-import type { Plugin, PluginTuple } from "unified";
+import type { Handlers } from "mdast-util-to-hast";
+import { all } from "mdast-util-to-hast";
 import raw from "rehype-raw";
 import sanitize from "rehype-sanitize";
+import gfm from "remark-gfm";
+import md2mdast from "remark-parse";
+import mdast2hast from "remark-rehype";
+import type { Plugin, PluginTuple } from "unified";
 
 import extensions from "./extensions.js";
 
 const handlers: Handlers = {
+  grid: (h, node) => h(node, "grid", node.props, all(h, node)),
   gridcontainer: (h, node) =>
     h(node, "gridcontainer", node.props, all(h, node)),
-  grid: (h, node) => h(node, "grid", node.props, all(h, node)),
+
   banginterpolation: (h, node) => h(node, "banginterpolation", node.props),
   interpolation: (h, node) => h(node, "interpolation", node.props),
 };
@@ -22,6 +23,7 @@ const handlers: Handlers = {
 const flavouredSchema = merge({}, defaultSchema, {
   attributes: {
     grid: ["container", "card", "xs", "sm", "md", "lg", "xl"],
+
     banginterpolation: ["formula"],
     interpolation: ["formula"],
   },
