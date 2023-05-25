@@ -6,7 +6,7 @@
     "esModuleInterop": true,
     "outDir": "dist",
     "paths": {
-      "@src/*": ["src/*"]
+      "@/*": ["src/*"]
     },
     "module": "NodeNext", // support ESM
     "moduleResolution": "NodeNext", // support ESM

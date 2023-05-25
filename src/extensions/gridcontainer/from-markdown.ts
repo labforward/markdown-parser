@@ -9,7 +9,7 @@ export const exit = {
 
 function onEnterGridContainer(this: CompileContext, token: Token) {
   // @ts-ignore TypeScript has an issue with extending existing types from mdast-util-from-markdown, even though it's permissible within the library
-  this.enter({ type: "gridcontainer", children: [] }, token);
+  this.enter({ children: [], type: "gridcontainer" }, token);
 }
 
 function onExitGridContainer(this: CompileContext, token: Token) {
