@@ -1,7 +1,11 @@
 import type { Code, Effects, State } from "micromark-util-types";
 declare const _default: {
     text: {
-        [x: number]: {
+        33: {
+            name: string;
+            tokenize: typeof tokenizeInterpolation;
+        };
+        123: {
             name: string;
             tokenize: typeof tokenizeInterpolation;
         };
