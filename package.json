@@ -37,7 +37,7 @@
   "dependencies": {
     "hast-util-sanitize": "^4.1.0",
     "lodash": "^4.17.21",
-    "mdast-util-from-markdown": "^1.3.0",
+    "mdast-util-from-markdown": "^1.3.1",
     "mdast-util-to-hast": "^12.3.0",
     "micromark-core-commonmark": "^1.0.6",
     "micromark-factory-space": "^1.0.0",
