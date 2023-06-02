@@ -2457,9 +2457,9 @@ exports[`Markdown extensions for interpolation works inside explicit markdown ta
                   ],
                   "position": {
                     "end": {
-                      "column": 27,
+                      "column": 26,
                       "line": 2,
-                      "offset": 27,
+                      "offset": 26,
                     },
                     "start": {
                       "column": 1,
@@ -2501,9 +2501,9 @@ exports[`Markdown extensions for interpolation works inside explicit markdown ta
                       "offset": 62,
                     },
                     "start": {
-                      "column": 27,
+                      "column": 26,
                       "line": 2,
-                      "offset": 27,
+                      "offset": 26,
                     },
                   },
                   "properties": {},
@@ -2573,9 +2573,9 @@ exports[`Markdown extensions for interpolation works inside explicit markdown ta
                   ],
                   "position": {
                     "end": {
-                      "column": 27,
+                      "column": 26,
                       "line": 4,
-                      "offset": 148,
+                      "offset": 147,
                     },
                     "start": {
                       "column": 1,
@@ -2617,9 +2617,9 @@ exports[`Markdown extensions for interpolation works inside explicit markdown ta
                       "offset": 182,
                     },
                     "start": {
-                      "column": 27,
+                      "column": 26,
                       "line": 4,
-                      "offset": 148,
+                      "offset": 147,
                     },
                   },
                   "properties": {},

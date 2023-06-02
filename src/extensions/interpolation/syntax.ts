@@ -16,7 +16,7 @@ export default {
 };
 
 function tokenizeInterpolation(effects: Effects, ok: State, nok: State) {
-  let type = "interpolation";
+  let type: "interpolation" | "bangInterpolation" = "interpolation";
   let markers = 0;
 
   // We add a dummy event here in order to be able to consume codes
