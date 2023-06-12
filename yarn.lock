@@ -3182,17 +3182,17 @@ levn@^0.4.1:
     prelude-ls "^1.2.1"
     type-check "~0.4.0"
 
-license-checker-rseidelsohn@^4.2.5:
-  version "4.2.5"
-  resolved "https://registry.yarnpkg.com/license-checker-rseidelsohn/-/license-checker-rseidelsohn-4.2.5.tgz#a8a8ec491720ace2045d7aa5e560e9f83b22a2d7"
-  integrity sha512-rH/52gY7DaIp2u85EB85PrlQ7PFjZfsx0dFkYcIZ4ehLt2GgqhWjBGT5LNP4+QvB3zfxhPLLrnmQEzQhzEJU2Q==
+license-checker-rseidelsohn@^4.2.6:
+  version "4.2.6"
+  resolved "https://registry.yarnpkg.com/license-checker-rseidelsohn/-/license-checker-rseidelsohn-4.2.6.tgz#8df638089989f6b1a06bd54651eba7223685b824"
+  integrity sha512-cV69Exm7y7stSVoYpFaQ1rEdmTtA7y1bMgTeeB1fqE0TZRkW1zpn8uIsIKeHK5rMvJYQzEuExNmLOTDXJMplgg==
   dependencies:
     chalk "4.1.2"
     debug "^4.3.4"
     lodash.clonedeep "^4.5.0"
     mkdirp "^1.0.4"
     nopt "^5.0.0"
-    read-installed-packages "^2.0.0"
+    read-installed-packages "^2.0.1"
     semver "^7.3.5"
     spdx-correct "^3.1.1"
     spdx-expression-parse "^3.0.1"
@@ -4163,10 +4163,10 @@ react-is@^18.0.0:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-18.2.0.tgz#199431eeaaa2e09f86427efbb4f1473edb47609b"
   integrity sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==
 
-read-installed-packages@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/read-installed-packages/-/read-installed-packages-2.0.0.tgz#8bab365877ad6dfa6d36636d17971de49e0106aa"
-  integrity sha512-uRz4qoVZk4lb+O60KGf5DklnI1fWopanBulo8O4Yt3fJ0JuSSYCVFFv+RK9g4ejQkn2YDVzZVW2Ej8JW7SI8XA==
+read-installed-packages@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/read-installed-packages/-/read-installed-packages-2.0.1.tgz#8ba63a9382a5158c37a288c2f21268d6eb9c85eb"
+  integrity sha512-t+fJOFOYaZIjBpTVxiV8Mkt7yQyy4E6MSrrnt5FmPd4enYvpU/9DYGirDmN1XQwkfeuWIhM/iu0t2rm6iSr0CA==
   dependencies:
     "@npmcli/fs" "^3.1.0"
     debug "^4.3.4"
