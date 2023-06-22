@@ -12,4 +12,4 @@ declare const _default: {
     };
 };
 export default _default;
-declare function tokenizeInterpolation(effects: Effects, ok: State, nok: State): (code: Code) => void | any;
+declare function tokenizeInterpolation(effects: Effects, ok: State, nok: State): (code: Code) => any | undefined;
