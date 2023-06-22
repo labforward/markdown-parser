@@ -1,5 +1,5 @@
 import { markdownLineEnding, markdownSpace } from "micromark-util-character";
-import { codes } from "micromark-util-symbol/codes";
+import { codes } from "micromark-util-symbol";
 import type {
   Code,
   Construct,
@@ -117,4 +117,6 @@ function tokenizeGridContainerContinuation(
 
 function tokenizeGridContainerExit(effects: Effects) {
   effects.exit("gridContainer");
+
+  return undefined;
 }

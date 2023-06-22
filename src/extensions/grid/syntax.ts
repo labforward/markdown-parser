@@ -1,8 +1,7 @@
 import { blankLine } from "micromark-core-commonmark";
 import { factorySpace } from "micromark-factory-space";
 import { markdownLineEnding } from "micromark-util-character";
-import { codes } from "micromark-util-symbol/codes";
-import { types } from "micromark-util-symbol/types";
+import { codes, types } from "micromark-util-symbol";
 import type {
   Code,
   Construct,
@@ -177,4 +176,6 @@ function tokenizeIndent(
 
 function tokenizeGridExit(effects: Effects) {
   effects.exit("grid");
+
+  return undefined;
 }
