@@ -65,7 +65,7 @@
     "lint-staged": "^13.2.3",
     "micromark-util-types": "^1.1.0",
     "prettier": "^2.8.8",
-    "sort-package-json": "^2.4.1",
+    "sort-package-json": "^2.5.0",
     "ts-jest": "^29.1.1",
     "ts-node": "^10.9.1",
     "tsc-alias": "^1.8.6",
