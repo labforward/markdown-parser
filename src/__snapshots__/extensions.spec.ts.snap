@@ -2348,6 +2348,64 @@ exports[`Markdown extensions for interpolation add support for interpolation syn
 }
 `;
 
+exports[`Markdown extensions for interpolation ignores empty brackets 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "position": {
+            "end": {
+              "column": 11,
+              "line": 1,
+              "offset": 10,
+            },
+            "start": {
+              "column": 1,
+              "line": 1,
+              "offset": 0,
+            },
+          },
+          "type": "text",
+          "value": "{{}} !{{}}",
+        },
+      ],
+      "position": {
+        "end": {
+          "column": 11,
+          "line": 1,
+          "offset": 10,
+        },
+        "start": {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "properties": {},
+      "tagName": "p",
+      "type": "element",
+    },
+  ],
+  "data": {
+    "quirksMode": false,
+  },
+  "position": {
+    "end": {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+    "start": {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "type": "root",
+}
+`;
+
 exports[`Markdown extensions for interpolation ignores unmatched brackets 1`] = `
 {
   "children": [

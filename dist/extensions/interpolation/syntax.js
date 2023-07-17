@@ -16,6 +16,7 @@ export default {
 function tokenizeInterpolation(effects, ok, nok) {
     var type = "interpolation";
     var markers = 0;
+    var self = this;
     // We add a dummy event here in order to be able to consume codes
     effects.enter("interpolationTemp");
     return onInterpolationStart;
@@ -46,6 +47,10 @@ function tokenizeInterpolation(effects, ok, nok) {
     }
     function onInterpolationFormula(code) {
         if (code === codes.rightCurlyBrace) {
+            // empty formula - return nok
+            if (self.previous === codes.leftCurlyBrace) {
+                return nok(code);
+            }
             // When we encounter '}', exit interpolation,
             // enter the dummy event to consume the character
             effects.exit(type);
