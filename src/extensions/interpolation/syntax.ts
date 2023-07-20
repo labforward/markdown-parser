@@ -1,5 +1,10 @@
 import { codes } from "micromark-util-symbol/codes";
-import type { Code, Effects, State } from "micromark-util-types";
+import type {
+  Code,
+  Effects,
+  State,
+  TokenizeContext,
+} from "micromark-util-types";
 
 const validCode = (code: Code) =>
   code && /[a-zA-Z0-9=\-_]/.test(String.fromCharCode(code));
@@ -15,9 +20,16 @@ export default {
   },
 };
 
-function tokenizeInterpolation(effects: Effects, ok: State, nok: State) {
+function tokenizeInterpolation(
+  this: TokenizeContext,
+  effects: Effects,
+  ok: State,
+  nok: State
+) {
   let type: "interpolation" | "bangInterpolation" = "interpolation";
   let markers = 0;
+
+  const self = this;
 
   // We add a dummy event here in order to be able to consume codes
   effects.enter("interpolationTemp");
@@ -58,6 +70,10 @@ function tokenizeInterpolation(effects: Effects, ok: State, nok: State) {
 
   function onInterpolationFormula(code: Code) {
     if (code === codes.rightCurlyBrace) {
+      // empty formula - return nok
+      if (self.previous === codes.leftCurlyBrace) {
+        return nok(code);
+      }
       // When we encounter '}', exit interpolation,
       // enter the dummy event to consume the character
       effects.exit(type);

@@ -157,6 +157,10 @@ and appear !{{inline|with=argument}} like this
     it("ignores unmatched brackets", () => {
       expect(parse("{{f}  {f}  {{f !{{f}  !{f}  !{{f")).toMatchSnapshot();
     });
+
+    it("ignores empty brackets", () => {
+      expect(parse("{{}} !{{}}")).toMatchSnapshot();
+    });
   });
 
   describe("backward compatibility", () => {
