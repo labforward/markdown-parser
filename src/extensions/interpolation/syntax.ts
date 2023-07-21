@@ -24,7 +24,7 @@ function tokenizeInterpolation(
   this: TokenizeContext,
   effects: Effects,
   ok: State,
-  nok: State
+  nok: State,
 ) {
   let type: "interpolation" | "bangInterpolation" = "interpolation";
   let markers = 0;

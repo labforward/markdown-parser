@@ -30,7 +30,7 @@ console.log('!');
 * foo
 * bar
 * baz
-  `)
+  `),
     ).toMatchSnapshot();
   });
 });

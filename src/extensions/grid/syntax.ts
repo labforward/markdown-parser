@@ -46,7 +46,7 @@ function tokenizeGrid(
   this: TokenizeContext,
   effects: Effects,
   ok: State,
-  nok: State
+  nok: State,
 ) {
   const self = this;
   const indentation = prefixSize(self.events);
@@ -65,8 +65,8 @@ function tokenizeGrid(
     factoryCharacters(
       effects,
       onGridStart,
-      nok
-    )([cPrecededByPercentSign, codes.lowercaseO, codes.lowercaseL])
+      nok,
+    )([cPrecededByPercentSign, codes.lowercaseO, codes.lowercaseL]),
   )([codes.percentSign, codes.lowercaseC, codes.lowercaseO, codes.lowercaseL]);
 
   function onGridStart(_code: Code) {
@@ -109,12 +109,12 @@ function tokenizeGridContinuation(
   this: TokenizeContext,
   effects: Effects,
   ok: State,
-  nok: State
+  nok: State,
 ) {
   return effects.check(
     blankLine,
     ok,
-    effects.attempt(indentConstruct, ok, nok)
+    effects.attempt(indentConstruct, ok, nok),
   );
 }
 
@@ -122,7 +122,7 @@ function tokenizeIndent(
   this: TokenizeContext,
   effects: Effects,
   ok: State,
-  nok: State
+  nok: State,
 ) {
   const self = this;
 
@@ -139,7 +139,7 @@ function tokenizeIndent(
         effects,
         afterIndent,
         "linePrefix",
-        maximum + 1 // somehow + 1 need to be there, else factorySpace will miss 1 space..
+        maximum + 1, // somehow + 1 need to be there, else factorySpace will miss 1 space..
       )(code);
     }
 

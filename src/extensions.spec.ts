@@ -28,7 +28,7 @@ describe("Markdown extensions", () => {
   2nd row
 
 After grid
-  `)
+  `),
       ).toMatchSnapshot();
     });
 
@@ -38,14 +38,14 @@ After grid
   left
 %col
   right
-%col`)
+%col`),
       ).toMatchSnapshot();
     });
 
     it("is able to parse partially defined grid", () => {
       expect(
         parse(`%col
-%col`)
+%col`),
       ).toMatchSnapshot();
 
       expect(
@@ -55,8 +55,8 @@ After grid
   \`\`\`yml
   code block
   \`\`\`
-%col`
-        )
+%col`,
+        ),
       ).toMatchSnapshot();
     });
 
@@ -67,7 +67,7 @@ After grid
   %col
     %col
       content
-`)
+`),
       ).toMatchSnapshot();
     });
 
@@ -80,7 +80,7 @@ After grid
     color: secondary
     variant: contained
   \`\`\`
-  `)
+  `),
       ).toMatchSnapshot();
 
       expect(
@@ -96,7 +96,7 @@ After grid
     \`\`\`
 
   %col
-    !{{stringField}}`)
+    !{{stringField}}`),
       ).toMatchSnapshot();
     });
 
@@ -108,7 +108,7 @@ After grid
   wn drinking
 %co
   fee
-  `)
+  `),
       ).toMatchSnapshot();
     });
   });
@@ -125,7 +125,7 @@ be parameterized
 {{function|argument}}
 
 and appear {{inline|with=argument}} like this
-`)
+`),
       ).toMatchSnapshot();
     });
 
@@ -140,7 +140,7 @@ be parameterized
 !{{function|arg-one|arg-two}}
 
 and appear !{{inline|with=argument}} like this
-`)
+`),
       ).toMatchSnapshot();
     });
 
@@ -150,7 +150,7 @@ and appear !{{inline|with=argument}} like this
 | {{function|argument}} | {{function|argument|argument}} |
 | --------------------- | ------------------------------ |
 | {{function|argument}} | {{function|argument}}          |
-`)
+`),
       ).toMatchSnapshot();
     });
 
@@ -178,7 +178,7 @@ and appear !{{inline|with=argument}} like this
   left
 %col
   right
-  <br />`)
+  <br />`),
       ).toMatchSnapshot();
     });
   });

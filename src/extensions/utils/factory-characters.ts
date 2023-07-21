@@ -4,7 +4,7 @@ function factoryCharacters(effects: Effects, ok: State, nok: State) {
   return charactersWalker;
 
   function charactersWalker(
-    characters: Array<Code | number | ((arg0: Code) => boolean)>
+    characters: Array<Code | number | ((arg0: Code) => boolean)>,
   ) {
     return onCharacterCode;
 
