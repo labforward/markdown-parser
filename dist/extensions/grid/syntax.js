@@ -78,8 +78,7 @@ function tokenizeIndent(effects, ok, nok) {
         if (current === 0) {
             // when grid are nested, each grid will check for continuation individually
             // but we should only consume the spaces once for the expected indentation of the deepest grid
-            return factorySpace(effects, afterIndent, "linePrefix", maximum + 1 // somehow + 1 need to be there, else factorySpace will miss 1 space..
-            )(code);
+            return factorySpace(effects, afterIndent, "linePrefix", maximum + 1)(code);
         }
         // all other grids within the same round of continuation check should
         // already have the correct amount of indentation consumed
