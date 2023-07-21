@@ -18,7 +18,7 @@ function onEnterBangInterpolation(this: CompileContext, token: Token) {
       // @ts-ignore TypeScript has an issue with extending existing types from mdast-util-from-markdown, even though it's permissible within the library
       type: "banginterpolation",
     },
-    token
+    token,
   );
 }
 
@@ -30,7 +30,7 @@ function onEnterInterpolation(this: CompileContext, token: Token) {
       // @ts-ignore TypeScript has an issue with extending existing types from mdast-util-from-markdown, even though it's permissible within the library
       type: "interpolation",
     },
-    token
+    token,
   );
 }
 

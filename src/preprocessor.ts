@@ -49,7 +49,7 @@ const preprocessor = (raw: string) =>
     // by escaping it to {{interpolation\|argument}}
     .replace(
       /(\|\s*{{)((?:[a-zA-Z0-9=\-_]+)(?:\|[a-zA-Z0-9=\-_]+)+)(?=}}\s*\|)/g,
-      (_, prefix, formula) => `${prefix}${formula.split("|").join("\\|")}`
+      (_, prefix, formula) => `${prefix}${formula.split("|").join("\\|")}`,
     );
 
 export default preprocessor;

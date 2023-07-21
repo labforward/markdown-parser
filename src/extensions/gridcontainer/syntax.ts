@@ -29,7 +29,7 @@ function tokenizeGridContainer(
   this: TokenizeContext,
   effects: Effects,
   ok: State,
-  nok: State
+  nok: State,
 ) {
   const self = this;
 
@@ -53,7 +53,7 @@ function tokenizeGridContainer(
         codes.lowercaseL,
       ]),
       onGridContainerStart,
-      nok
+      nok,
     );
   }
 
@@ -80,7 +80,7 @@ function tokenizeGridContainerContinuation(
   this: TokenizeContext,
   effects: Effects,
   ok: State,
-  nok: State
+  nok: State,
 ) {
   const self = this;
   let newlines = 0;
