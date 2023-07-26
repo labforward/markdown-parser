@@ -628,24 +628,23 @@
     "@jridgewell/resolve-uri" "3.1.0"
     "@jridgewell/sourcemap-codec" "1.4.14"
 
-"@labforward/config@~0.1.4":
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/@labforward/config/-/config-0.1.4.tgz#25489c5ddd42f45a2e09de10a1cdde89bd274d79"
-  integrity sha512-QDOWmUpQ5ohJVzgylcEqZGbKk+rXCZt/D6dLfVAV+pR+cqaCWqu6KNi/a6u4z0coO1LgLK9WuGMXJ4muTTYu+g==
+"@labforward/config@~0.1.5":
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/@labforward/config/-/config-0.1.5.tgz#a215db9808f0e46e487b791996250c7de45cbd00"
+  integrity sha512-142y0rA5I0S4EKu8ubz6DKFRPS7flMw8Ow1pIfrv+G56sZuORBRewgxb3yshwW8WJND6uXjWEh2cvzOvP4f56Q==
   dependencies:
     "@babel/core" "^7.22.9"
     prettier "^3.0.0"
-    prettier-plugin-organize-imports "^3.2.3"
     sort-package-json "^2.5.1"
     typescript "^5.1.6"
 
-"@labforward/eslint-config-base@~0.1.4":
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/@labforward/eslint-config-base/-/eslint-config-base-0.1.4.tgz#c99e8817dec408de1267696ea4b817ba9ebeadd5"
-  integrity sha512-d5xGyRb1bTVtCb6WkpjgYxqubebeCPqAgbK+XI1kuNEX/iAEQwYMJQkPHcRX1ckJUiRyNGTsZt7li7iRC0HBBw==
+"@labforward/eslint-config-base@~0.1.5":
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/@labforward/eslint-config-base/-/eslint-config-base-0.1.5.tgz#4f1e36433a1a7055aa43243ebea9b1b2d6fa41dd"
+  integrity sha512-RkHIyb4N+0cvU5gZdUazRoO9kIo/5GH9oz3km3u23+C86iNlPeHJEwv72Ch2Lpj3PP6oF10Tkeaw4mvBNYoJ1g==
   dependencies:
     "@babel/eslint-parser" "^7.22.9"
-    "@labforward/config" "~0.1.4"
+    "@labforward/config" "~0.1.5"
     "@typescript-eslint/eslint-plugin" "^5.61.0"
     "@typescript-eslint/parser" "^5.61.0"
     eslint "^8.45.0"
@@ -656,12 +655,12 @@
     eslint-plugin-prettier "^5.0.0"
     eslint-plugin-sort-destructure-keys "^1.5.0"
 
-"@labforward/eslint-config-node@~0.1.4":
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/@labforward/eslint-config-node/-/eslint-config-node-0.1.4.tgz#557a5d1266540f3b7906ab3b7d2dd460e1eeaa12"
-  integrity sha512-yY/hQLewkm+BgTwLlnub8J3JWiVrF3PDKDVamtep8LmvaKKTzqjNr1zwlhmoq2VagpzUc2BrcELC2f68hlUPNg==
+"@labforward/eslint-config-node@~0.1.5":
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/@labforward/eslint-config-node/-/eslint-config-node-0.1.5.tgz#a293e9c58d213ccb6048c9c866661660b59a0635"
+  integrity sha512-EEW7DXuf37r6dMazJOmpj/A5hlsKi2vA9h174KFYfpqdqPJpsxWB/kBupJ7jjYUcrAcIjuJ7FMA1FV0x8Rw4Bg==
   dependencies:
-    "@labforward/eslint-config-base" "~0.1.4"
+    "@labforward/eslint-config-base" "~0.1.5"
     "@types/node" "*"
 
 "@nicolo-ribaudo/eslint-scope-5-internals@5.1.1-v1":
@@ -4105,11 +4104,6 @@ prettier-linter-helpers@^1.0.0:
   integrity sha512-GbK2cP9nraSSUF9N2XwUwqfzlAFlMNYYl+ShE/V+H8a9uNl/oUqB1w2EL54Jh0OlyRSd8RfWYJ3coVS4TROP2w==
   dependencies:
     fast-diff "^1.1.2"
-
-prettier-plugin-organize-imports@^3.2.3:
-  version "3.2.3"
-  resolved "https://registry.yarnpkg.com/prettier-plugin-organize-imports/-/prettier-plugin-organize-imports-3.2.3.tgz#6b0141ac71f7ee9a673ce83e95456319e3a7cf0d"
-  integrity sha512-KFvk8C/zGyvUaE3RvxN2MhCLwzV6OBbFSkwZ2OamCrs9ZY4i5L77jQ/w4UmUr+lqX8qbaqVq6bZZkApn+IgJSg==
 
 prettier@^3.0.0:
   version "3.0.0"
