@@ -38,7 +38,7 @@
     "hast-util-sanitize": "^4.1.0",
     "lodash": "^4.17.21",
     "mdast-util-from-markdown": "^1.3.1",
-    "mdast-util-to-hast": "^12.3.0",
+    "mdast-util-to-hast": "^13.0.1",
     "micromark-core-commonmark": "^1.1.0",
     "micromark-factory-space": "^1.1.0",
     "micromark-util-character": "^1.2.0",
