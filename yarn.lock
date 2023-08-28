@@ -809,6 +809,13 @@
   dependencies:
     "@types/unist" "*"
 
+"@types/hast@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@types/hast/-/hast-3.0.0.tgz#47ebd2892a623fa7e517ba392834880ff288475e"
+  integrity sha512-SoytUJRuf68HXYqcXicQIhCrLQjqeYU2anikr4G3p3Iz+OZO5QDQpDj++gv+RenHsnUBwNZ2dumBArF8VLSk2Q==
+  dependencies:
+    "@types/unist" "*"
+
 "@types/istanbul-lib-coverage@*", "@types/istanbul-lib-coverage@^2.0.0", "@types/istanbul-lib-coverage@^2.0.1":
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/@types/istanbul-lib-coverage/-/istanbul-lib-coverage-2.0.4.tgz#8467d4b3c087805d63580480890791277ce35c44"
@@ -887,6 +894,11 @@
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/@types/unist/-/unist-2.0.6.tgz#250a7b16c3b91f672a24552ec64678eeb1d3a08d"
   integrity sha512-PBjIUxZHOuj0R15/xuwJYjFi+KZdNFrehocChv4g5hu6aFroHue8m0lBP0POdK2nKzbw0cgV1mws8+V/JAcEkQ==
+
+"@types/unist@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@types/unist/-/unist-3.0.0.tgz#988ae8af1e5239e89f9fbb1ade4c935f4eeedf9a"
+  integrity sha512-MFETx3tbTjE7Uk6vvnWINA/1iJ7LuMdO4fcq8UfF0pRbj01aGLduVvQcRyswuACJdpnHgg8E3rQLhaRdNEJS0w==
 
 "@types/yargs-parser@*":
   version "21.0.0"
@@ -983,6 +995,11 @@
   dependencies:
     "@typescript-eslint/types" "5.62.0"
     eslint-visitor-keys "^3.3.0"
+
+"@ungap/structured-clone@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@ungap/structured-clone/-/structured-clone-1.2.0.tgz#756641adb587851b5ccb3e095daf27ae581c8406"
+  integrity sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==
 
 abbrev@1:
   version "1.1.1"
@@ -2347,12 +2364,21 @@ hast-util-raw@^7.2.0:
     web-namespaces "^2.0.0"
     zwitch "^2.0.0"
 
-hast-util-sanitize@^4.0.0, hast-util-sanitize@^4.1.0:
+hast-util-sanitize@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/hast-util-sanitize/-/hast-util-sanitize-4.1.0.tgz#d90f8521f5083547095c5c63a7e03150303e0286"
   integrity sha512-Hd9tU0ltknMGRDv+d6Ro/4XKzBqQnP/EZrpiTbpFYfXv/uOhWeKc+2uajcbEvAEH98VZd7eII2PiXm13RihnLw==
   dependencies:
     "@types/hast" "^2.0.0"
+
+hast-util-sanitize@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/hast-util-sanitize/-/hast-util-sanitize-5.0.0.tgz#041ef2247fe8f34b5f2bb4398c545e465e5a8c0e"
+  integrity sha512-L0g/qhOA82zG2hA3O29hnlv4mLU7YVVT1if5JZSr2tKO1ywkQbuMDcN05btgX0HtpqDXQniAM0ar0K+Lv4MDBQ==
+  dependencies:
+    "@types/hast" "^3.0.0"
+    "@ungap/structured-clone" "^1.2.0"
+    unist-util-position "^5.0.0"
 
 hast-util-to-parse5@^7.0.0:
   version "7.1.0"
@@ -4181,14 +4207,13 @@ rehype-raw@^6.1.1:
     hast-util-raw "^7.2.0"
     unified "^10.0.0"
 
-rehype-sanitize@^5.0.1:
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/rehype-sanitize/-/rehype-sanitize-5.0.1.tgz#dac01a7417bdd329260c74c74449697b4be5eb56"
-  integrity sha512-da/jIOjq8eYt/1r9GN6GwxIR3gde7OZ+WV8pheu1tL8K0D9KxM2AyMh+UEfke+FfdM3PvGHeYJU0Td5OWa7L5A==
+rehype-sanitize@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/rehype-sanitize/-/rehype-sanitize-6.0.0.tgz#16e95f4a67a69cbf0f79e113c8e0df48203db73c"
+  integrity sha512-CsnhKNsyI8Tub6L4sm5ZFsme4puGfc6pYylvXo1AeqaGbjOYyzNv3qZPwvs0oMJ39eryyeOdmxwUIo94IpEhqg==
   dependencies:
-    "@types/hast" "^2.0.0"
-    hast-util-sanitize "^4.0.0"
-    unified "^10.0.0"
+    "@types/hast" "^3.0.0"
+    hast-util-sanitize "^5.0.0"
 
 remark-gfm@^3.0.1:
   version "3.0.1"
@@ -4819,6 +4844,13 @@ unist-util-position@^4.0.0:
   integrity sha512-kUBE91efOWfIVBo8xzh/uZQ7p9ffYRtUbMRZBNFYwf0RK8koUMx6dGUfwylLOKmaT2cs4wSW96QoYUSXAyEtpg==
   dependencies:
     "@types/unist" "^2.0.0"
+
+unist-util-position@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/unist-util-position/-/unist-util-position-5.0.0.tgz#678f20ab5ca1207a97d7ea8a388373c9cf896be4"
+  integrity sha512-fucsC7HjXvkB5R3kTCO7kUjRdrS0BJt3M/FPxmHMBOm8JQi2BsHAHFsy27E0EolP8rp0NzXsJ+jNPyDWvOJZPA==
+  dependencies:
+    "@types/unist" "^3.0.0"
 
 unist-util-stringify-position@^3.0.0:
   version "3.0.3"
