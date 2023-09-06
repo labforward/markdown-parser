@@ -55,7 +55,7 @@
     "@labforward/config": "~0.1.5",
     "@labforward/eslint-config-node": "~0.1.5",
     "@types/jest": "^29.5.4",
-    "@types/lodash": "^4.14.197",
+    "@types/lodash": "^4.14.198",
     "@types/node": "^20.5.7",
     "eslint": "^8.48.0",
     "husky": "^8.0.3",
