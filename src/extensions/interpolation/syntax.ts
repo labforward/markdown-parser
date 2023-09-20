@@ -1,4 +1,4 @@
-import { codes } from "micromark-util-symbol/codes";
+import { codes } from "micromark-util-symbol";
 import type {
   Code,
   Effects,
