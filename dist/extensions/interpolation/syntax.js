@@ -1,5 +1,5 @@
 var _a;
-import { codes } from "micromark-util-symbol/codes";
+import { codes } from "micromark-util-symbol";
 var validCode = function (code) {
     return code && /[a-zA-Z0-9=\-_]/.test(String.fromCharCode(code));
 };

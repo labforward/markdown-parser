@@ -9,20 +9,28 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
 };
 import { defaultSchema } from "hast-util-sanitize";
 import merge from "lodash/merge.js";
-import { all } from "mdast-util-to-hast";
 import raw from "rehype-raw";
 import sanitize from "rehype-sanitize";
 import gfm from "remark-gfm";
 import md2mdast from "remark-parse";
 import mdast2hast from "remark-rehype";
 import extensions from "./extensions.js";
+var element = function (tagName, properties, children) {
+    if (children === void 0) { children = []; }
+    return ({
+        children: children,
+        properties: properties,
+        tagName: tagName,
+        type: "element",
+    });
+};
 var handlers = {
-    grid: function (h, node) { return h(node, "grid", node.props, all(h, node)); },
-    gridcontainer: function (h, node) {
-        return h(node, "gridcontainer", node.props, all(h, node));
+    grid: function (state, node) { return element("grid", node.props, state.all(node)); },
+    gridcontainer: function (state, node) {
+        return element("gridcontainer", node.props, state.all(node));
     },
-    banginterpolation: function (h, node) { return h(node, "banginterpolation", node.props); },
-    interpolation: function (h, node) { return h(node, "interpolation", node.props); },
+    banginterpolation: function (_state, node) { return element("banginterpolation", node.props); },
+    interpolation: function (_state, node) { return element("interpolation", node.props); },
 };
 var flavouredSchema = merge({}, defaultSchema, {
     attributes: {
@@ -37,7 +45,6 @@ flavouredSchema.tagNames = __spreadArray(__spreadArray([], (flavouredSchema.tagN
     "banginterpolation",
     "interpolation",
 ], false);
-// FIXME: Typescript throws errors here when the type casting is not present, despite the matching types
 var md2hast = [
     md2mdast,
     gfm,

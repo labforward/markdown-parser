@@ -1,6 +1,6 @@
 var _a;
 import { markdownLineEnding, markdownSpace } from "micromark-util-character";
-import { codes } from "micromark-util-symbol/codes";
+import { codes } from "micromark-util-symbol";
 import charactersConstruct from "../../extensions/utils/characters-construct.js";
 var gridContainerConstruct = {
     continuation: {
