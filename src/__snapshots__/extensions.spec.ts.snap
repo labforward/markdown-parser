@@ -128,18 +128,6 @@ exports[`Markdown extensions backward compatibility support self closing html ta
               "type": "element",
             },
           ],
-          "position": {
-            "end": {
-              "column": 7,
-              "line": 4,
-              "offset": 49,
-            },
-            "start": {
-              "column": 2,
-              "line": 3,
-              "offset": 39,
-            },
-          },
           "properties": {},
           "tagName": "grid",
           "type": "element",
@@ -182,35 +170,11 @@ exports[`Markdown extensions backward compatibility support self closing html ta
               "type": "element",
             },
           ],
-          "position": {
-            "end": {
-              "column": 8,
-              "line": 6,
-              "offset": 62,
-            },
-            "start": {
-              "column": 1,
-              "line": 5,
-              "offset": 50,
-            },
-          },
           "properties": {},
           "tagName": "grid",
           "type": "element",
         },
       ],
-      "position": {
-        "end": {
-          "column": 8,
-          "line": 6,
-          "offset": 62,
-        },
-        "start": {
-          "column": 1,
-          "line": 3,
-          "offset": 38,
-        },
-      },
       "properties": {},
       "tagName": "gridcontainer",
       "type": "element",
@@ -349,18 +313,6 @@ exports[`Markdown extensions backward compatibility support self closing html ta
               "type": "element",
             },
           ],
-          "position": {
-            "end": {
-              "column": 7,
-              "line": 11,
-              "offset": 95,
-            },
-            "start": {
-              "column": 2,
-              "line": 10,
-              "offset": 85,
-            },
-          },
           "properties": {},
           "tagName": "grid",
           "type": "element",
@@ -428,35 +380,11 @@ exports[`Markdown extensions backward compatibility support self closing html ta
               "type": "element",
             },
           ],
-          "position": {
-            "end": {
-              "column": 13,
-              "line": 14,
-              "offset": 121,
-            },
-            "start": {
-              "column": 1,
-              "line": 12,
-              "offset": 96,
-            },
-          },
           "properties": {},
           "tagName": "grid",
           "type": "element",
         },
       ],
-      "position": {
-        "end": {
-          "column": 13,
-          "line": 14,
-          "offset": 121,
-        },
-        "start": {
-          "column": 1,
-          "line": 10,
-          "offset": 84,
-        },
-      },
       "properties": {},
       "tagName": "gridcontainer",
       "type": "element",
@@ -606,18 +534,6 @@ exports[`Markdown extensions for grid add support for parsing custom grid syntax
                   "type": "element",
                 },
               ],
-              "position": {
-                "end": {
-                  "column": 3,
-                  "line": 8,
-                  "offset": 76,
-                },
-                "start": {
-                  "column": 3,
-                  "line": 6,
-                  "offset": 60,
-                },
-              },
               "properties": {},
               "tagName": "grid",
               "type": "element",
@@ -679,35 +595,11 @@ exports[`Markdown extensions for grid add support for parsing custom grid syntax
                   "type": "element",
                 },
               ],
-              "position": {
-                "end": {
-                  "column": 15,
-                  "line": 9,
-                  "offset": 95,
-                },
-                "start": {
-                  "column": 3,
-                  "line": 8,
-                  "offset": 76,
-                },
-              },
               "properties": {},
               "tagName": "grid",
               "type": "element",
             },
           ],
-          "position": {
-            "end": {
-              "column": 15,
-              "line": 9,
-              "offset": 95,
-            },
-            "start": {
-              "column": 2,
-              "line": 5,
-              "offset": 37,
-            },
-          },
           "properties": {
             "container": "container",
             "xs": "2",
@@ -753,35 +645,11 @@ exports[`Markdown extensions for grid add support for parsing custom grid syntax
               "type": "element",
             },
           ],
-          "position": {
-            "end": {
-              "column": 8,
-              "line": 11,
-              "offset": 108,
-            },
-            "start": {
-              "column": 1,
-              "line": 10,
-              "offset": 96,
-            },
-          },
           "properties": {},
           "tagName": "grid",
           "type": "element",
         },
       ],
-      "position": {
-        "end": {
-          "column": 8,
-          "line": 11,
-          "offset": 108,
-        },
-        "start": {
-          "column": 1,
-          "line": 5,
-          "offset": 36,
-        },
-      },
       "properties": {},
       "tagName": "gridcontainer",
       "type": "element",
@@ -831,35 +699,11 @@ exports[`Markdown extensions for grid add support for parsing custom grid syntax
               "type": "element",
             },
           ],
-          "position": {
-            "end": {
-              "column": 10,
-              "line": 14,
-              "offset": 124,
-            },
-            "start": {
-              "column": 2,
-              "line": 13,
-              "offset": 111,
-            },
-          },
           "properties": {},
           "tagName": "grid",
           "type": "element",
         },
       ],
-      "position": {
-        "end": {
-          "column": 10,
-          "line": 14,
-          "offset": 124,
-        },
-        "start": {
-          "column": 1,
-          "line": 13,
-          "offset": 110,
-        },
-      },
       "properties": {},
       "tagName": "gridcontainer",
       "type": "element",
@@ -1034,69 +878,21 @@ exports[`Markdown extensions for grid is able to parse deeply nested grid 1`] = 
                       "type": "element",
                     },
                   ],
-                  "position": {
-                    "end": {
-                      "column": 14,
-                      "line": 5,
-                      "offset": 35,
-                    },
-                    "start": {
-                      "column": 5,
-                      "line": 4,
-                      "offset": 17,
-                    },
-                  },
                   "properties": {},
                   "tagName": "grid",
                   "type": "element",
                 },
               ],
-              "position": {
-                "end": {
-                  "column": 14,
-                  "line": 5,
-                  "offset": 35,
-                },
-                "start": {
-                  "column": 3,
-                  "line": 3,
-                  "offset": 8,
-                },
-              },
               "properties": {},
               "tagName": "grid",
               "type": "element",
             },
           ],
-          "position": {
-            "end": {
-              "column": 14,
-              "line": 5,
-              "offset": 35,
-            },
-            "start": {
-              "column": 2,
-              "line": 2,
-              "offset": 2,
-            },
-          },
           "properties": {},
           "tagName": "grid",
           "type": "element",
         },
       ],
-      "position": {
-        "end": {
-          "column": 14,
-          "line": 5,
-          "offset": 35,
-        },
-        "start": {
-          "column": 1,
-          "line": 2,
-          "offset": 1,
-        },
-      },
       "properties": {},
       "tagName": "gridcontainer",
       "type": "element",
@@ -1164,18 +960,6 @@ exports[`Markdown extensions for grid is able to parse grid without any leading 
               "type": "element",
             },
           ],
-          "position": {
-            "end": {
-              "column": 7,
-              "line": 2,
-              "offset": 11,
-            },
-            "start": {
-              "column": 2,
-              "line": 1,
-              "offset": 1,
-            },
-          },
           "properties": {},
           "tagName": "grid",
           "type": "element",
@@ -1218,53 +1002,17 @@ exports[`Markdown extensions for grid is able to parse grid without any leading 
               "type": "element",
             },
           ],
-          "position": {
-            "end": {
-              "column": 8,
-              "line": 4,
-              "offset": 24,
-            },
-            "start": {
-              "column": 1,
-              "line": 3,
-              "offset": 12,
-            },
-          },
           "properties": {},
           "tagName": "grid",
           "type": "element",
         },
         {
           "children": [],
-          "position": {
-            "end": {
-              "column": 5,
-              "line": 5,
-              "offset": 29,
-            },
-            "start": {
-              "column": 1,
-              "line": 5,
-              "offset": 25,
-            },
-          },
           "properties": {},
           "tagName": "grid",
           "type": "element",
         },
       ],
-      "position": {
-        "end": {
-          "column": 5,
-          "line": 5,
-          "offset": 29,
-        },
-        "start": {
-          "column": 1,
-          "line": 1,
-          "offset": 0,
-        },
-      },
       "properties": {},
       "tagName": "gridcontainer",
       "type": "element",
@@ -1296,53 +1044,17 @@ exports[`Markdown extensions for grid is able to parse partially defined grid 1`
       "children": [
         {
           "children": [],
-          "position": {
-            "end": {
-              "column": 5,
-              "line": 1,
-              "offset": 4,
-            },
-            "start": {
-              "column": 2,
-              "line": 1,
-              "offset": 1,
-            },
-          },
           "properties": {},
           "tagName": "grid",
           "type": "element",
         },
         {
           "children": [],
-          "position": {
-            "end": {
-              "column": 5,
-              "line": 2,
-              "offset": 9,
-            },
-            "start": {
-              "column": 1,
-              "line": 2,
-              "offset": 5,
-            },
-          },
           "properties": {},
           "tagName": "grid",
           "type": "element",
         },
       ],
-      "position": {
-        "end": {
-          "column": 5,
-          "line": 2,
-          "offset": 9,
-        },
-        "start": {
-          "column": 1,
-          "line": 1,
-          "offset": 0,
-        },
-      },
       "properties": {},
       "tagName": "gridcontainer",
       "type": "element",
@@ -1350,18 +1062,6 @@ exports[`Markdown extensions for grid is able to parse partially defined grid 1`
   ],
   "data": {
     "quirksMode": false,
-  },
-  "position": {
-    "end": {
-      "column": 1,
-      "line": 1,
-      "offset": 0,
-    },
-    "start": {
-      "column": 1,
-      "line": 1,
-      "offset": 0,
-    },
   },
   "type": "root",
 }
@@ -1436,7 +1136,11 @@ exports[`Markdown extensions for grid is able to parse partially defined grid 2`
                       "offset": 31,
                     },
                   },
-                  "properties": {},
+                  "properties": {
+                    "className": [
+                      "language-yml",
+                    ],
+                  },
                   "tagName": "code",
                   "type": "element",
                 },
@@ -1458,53 +1162,17 @@ exports[`Markdown extensions for grid is able to parse partially defined grid 2`
               "type": "element",
             },
           ],
-          "position": {
-            "end": {
-              "column": 6,
-              "line": 5,
-              "offset": 56,
-            },
-            "start": {
-              "column": 2,
-              "line": 2,
-              "offset": 25,
-            },
-          },
           "properties": {},
           "tagName": "grid",
           "type": "element",
         },
         {
           "children": [],
-          "position": {
-            "end": {
-              "column": 5,
-              "line": 6,
-              "offset": 61,
-            },
-            "start": {
-              "column": 1,
-              "line": 6,
-              "offset": 57,
-            },
-          },
           "properties": {},
           "tagName": "grid",
           "type": "element",
         },
       ],
-      "position": {
-        "end": {
-          "column": 5,
-          "line": 6,
-          "offset": 61,
-        },
-        "start": {
-          "column": 1,
-          "line": 2,
-          "offset": 24,
-        },
-      },
       "properties": {},
       "tagName": "gridcontainer",
       "type": "element",
@@ -1561,7 +1229,11 @@ exports[`Markdown extensions for grid preserve spaces inside code block 1`] = `
                       "offset": 7,
                     },
                   },
-                  "properties": {},
+                  "properties": {
+                    "className": [
+                      "language-yml",
+                    ],
+                  },
                   "tagName": "code",
                   "type": "element",
                 },
@@ -1583,35 +1255,11 @@ exports[`Markdown extensions for grid preserve spaces inside code block 1`] = `
               "type": "element",
             },
           ],
-          "position": {
-            "end": {
-              "column": 3,
-              "line": 8,
-              "offset": 105,
-            },
-            "start": {
-              "column": 2,
-              "line": 1,
-              "offset": 1,
-            },
-          },
           "properties": {},
           "tagName": "grid",
           "type": "element",
         },
       ],
-      "position": {
-        "end": {
-          "column": 3,
-          "line": 8,
-          "offset": 105,
-        },
-        "start": {
-          "column": 1,
-          "line": 1,
-          "offset": 0,
-        },
-      },
       "properties": {},
       "tagName": "gridcontainer",
       "type": "element",
@@ -1672,7 +1320,11 @@ exports[`Markdown extensions for grid preserve spaces inside code block 2`] = `
                           "offset": 26,
                         },
                       },
-                      "properties": {},
+                      "properties": {
+                        "className": [
+                          "language-yml",
+                        ],
+                      },
                       "tagName": "code",
                       "type": "element",
                     },
@@ -1694,18 +1346,6 @@ exports[`Markdown extensions for grid preserve spaces inside code block 2`] = `
                   "type": "element",
                 },
               ],
-              "position": {
-                "end": {
-                  "column": 3,
-                  "line": 12,
-                  "offset": 195,
-                },
-                "start": {
-                  "column": 3,
-                  "line": 2,
-                  "offset": 17,
-                },
-              },
               "properties": {},
               "tagName": "grid",
               "type": "element",
@@ -1716,18 +1356,6 @@ exports[`Markdown extensions for grid preserve spaces inside code block 2`] = `
                   "children": [
                     {
                       "children": [],
-                      "position": {
-                        "end": {
-                          "column": 19,
-                          "line": 13,
-                          "offset": 218,
-                        },
-                        "start": {
-                          "column": 8,
-                          "line": 13,
-                          "offset": 207,
-                        },
-                      },
                       "properties": {
                         "formula": "stringField",
                       },
@@ -1752,35 +1380,11 @@ exports[`Markdown extensions for grid preserve spaces inside code block 2`] = `
                   "type": "element",
                 },
               ],
-              "position": {
-                "end": {
-                  "column": 21,
-                  "line": 13,
-                  "offset": 220,
-                },
-                "start": {
-                  "column": 3,
-                  "line": 12,
-                  "offset": 195,
-                },
-              },
               "properties": {},
               "tagName": "grid",
               "type": "element",
             },
           ],
-          "position": {
-            "end": {
-              "column": 21,
-              "line": 13,
-              "offset": 220,
-            },
-            "start": {
-              "column": 2,
-              "line": 1,
-              "offset": 1,
-            },
-          },
           "properties": {
             "container": "container",
           },
@@ -1788,18 +1392,6 @@ exports[`Markdown extensions for grid preserve spaces inside code block 2`] = `
           "type": "element",
         },
       ],
-      "position": {
-        "end": {
-          "column": 21,
-          "line": 13,
-          "offset": 220,
-        },
-        "start": {
-          "column": 1,
-          "line": 1,
-          "offset": 0,
-        },
-      },
       "properties": {},
       "tagName": "gridcontainer",
       "type": "element",
@@ -1871,18 +1463,6 @@ exports[`Markdown extensions for interpolation add support for bang! interpolati
       "children": [
         {
           "children": [],
-          "position": {
-            "end": {
-              "column": 12,
-              "line": 3,
-              "offset": 67,
-            },
-            "start": {
-              "column": 4,
-              "line": 3,
-              "offset": 59,
-            },
-          },
           "properties": {
             "formula": "function",
           },
@@ -1955,18 +1535,6 @@ exports[`Markdown extensions for interpolation add support for bang! interpolati
       "children": [
         {
           "children": [],
-          "position": {
-            "end": {
-              "column": 28,
-              "line": 7,
-              "offset": 116,
-            },
-            "start": {
-              "column": 4,
-              "line": 7,
-              "offset": 92,
-            },
-          },
           "properties": {
             "formula": "function|arg-one|arg-two",
           },
@@ -2015,18 +1583,6 @@ exports[`Markdown extensions for interpolation add support for bang! interpolati
         },
         {
           "children": [],
-          "position": {
-            "end": {
-              "column": 35,
-              "line": 9,
-              "offset": 154,
-            },
-            "start": {
-              "column": 15,
-              "line": 9,
-              "offset": 134,
-            },
-          },
           "properties": {
             "formula": "inline|with=argument",
           },
@@ -2133,18 +1689,6 @@ exports[`Markdown extensions for interpolation add support for interpolation syn
       "children": [
         {
           "children": [],
-          "position": {
-            "end": {
-              "column": 11,
-              "line": 3,
-              "offset": 60,
-            },
-            "start": {
-              "column": 3,
-              "line": 3,
-              "offset": 52,
-            },
-          },
           "properties": {
             "formula": "function",
           },
@@ -2217,18 +1761,6 @@ exports[`Markdown extensions for interpolation add support for interpolation syn
       "children": [
         {
           "children": [],
-          "position": {
-            "end": {
-              "column": 20,
-              "line": 7,
-              "offset": 101,
-            },
-            "start": {
-              "column": 3,
-              "line": 7,
-              "offset": 84,
-            },
-          },
           "properties": {
             "formula": "function|argument",
           },
@@ -2277,18 +1809,6 @@ exports[`Markdown extensions for interpolation add support for interpolation syn
         },
         {
           "children": [],
-          "position": {
-            "end": {
-              "column": 34,
-              "line": 9,
-              "offset": 138,
-            },
-            "start": {
-              "column": 14,
-              "line": 9,
-              "offset": 118,
-            },
-          },
           "properties": {
             "formula": "inline|with=argument",
           },
@@ -2494,18 +2014,6 @@ exports[`Markdown extensions for interpolation works inside explicit markdown ta
                   "children": [
                     {
                       "children": [],
-                      "position": {
-                        "end": {
-                          "column": 23,
-                          "line": 2,
-                          "offset": 23,
-                        },
-                        "start": {
-                          "column": 5,
-                          "line": 2,
-                          "offset": 5,
-                        },
-                      },
                       "properties": {
                         "formula": "function|argument",
                       },
@@ -2533,18 +2041,6 @@ exports[`Markdown extensions for interpolation works inside explicit markdown ta
                   "children": [
                     {
                       "children": [],
-                      "position": {
-                        "end": {
-                          "column": 58,
-                          "line": 2,
-                          "offset": 58,
-                        },
-                        "start": {
-                          "column": 30,
-                          "line": 2,
-                          "offset": 30,
-                        },
-                      },
                       "properties": {
                         "formula": "function|argument|argument",
                       },
@@ -2610,18 +2106,6 @@ exports[`Markdown extensions for interpolation works inside explicit markdown ta
                   "children": [
                     {
                       "children": [],
-                      "position": {
-                        "end": {
-                          "column": 23,
-                          "line": 4,
-                          "offset": 144,
-                        },
-                        "start": {
-                          "column": 5,
-                          "line": 4,
-                          "offset": 126,
-                        },
-                      },
                       "properties": {
                         "formula": "function|argument",
                       },
@@ -2649,18 +2133,6 @@ exports[`Markdown extensions for interpolation works inside explicit markdown ta
                   "children": [
                     {
                       "children": [],
-                      "position": {
-                        "end": {
-                          "column": 48,
-                          "line": 4,
-                          "offset": 169,
-                        },
-                        "start": {
-                          "column": 30,
-                          "line": 4,
-                          "offset": 151,
-                        },
-                      },
                       "properties": {
                         "formula": "function|argument",
                       },

@@ -521,7 +521,11 @@ exports[`Markdown supports basic markdown 1`] = `
               "offset": 161,
             },
           },
-          "properties": {},
+          "properties": {
+            "className": [
+              "language-javascript",
+            ],
+          },
           "tagName": "code",
           "type": "element",
         },
