@@ -2,8 +2,7 @@ var _a;
 import { blankLine } from "micromark-core-commonmark";
 import { factorySpace } from "micromark-factory-space";
 import { markdownLineEnding } from "micromark-util-character";
-import { codes } from "micromark-util-symbol/codes";
-import { types } from "micromark-util-symbol/types";
+import { codes, types } from "micromark-util-symbol";
 import factoryCharacters from "../../extensions/utils/factory-characters.js";
 var prefixSize = function (events) {
     var tail = events[events.length - 1];
