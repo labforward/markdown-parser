@@ -10,12 +10,7 @@
   "license": "Apache-2.0",
   "author": "labforward GmbH",
   "type": "module",
-  "exports": {
-    ".": {
-      "require": null,
-      "default": "./dist/index.js"
-    }
-  },
+  "exports": "./dist/index.js",
   "main": "dist/index.js",
   "scripts": {
     "build": "rm -rf dist && tsc && tsc-alias",
