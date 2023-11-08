@@ -49,7 +49,7 @@
     "@babel/core": "^7.23.2",
     "@labforward/config": "~0.1.5",
     "@labforward/eslint-config-node": "~0.1.5",
-    "@types/jest": "^29.5.7",
+    "@types/jest": "^29.5.8",
     "@types/lodash": "^4.14.200",
     "@types/node": "^20.9.0",
     "eslint": "^8.53.0",
