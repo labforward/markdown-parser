@@ -42,7 +42,7 @@ commands:
           name: Save Yarn Package Cache
           key: *yarn_cache_key
           paths:
-            - ~/.cache/yarn
+            - ~/.yarn/berry
   restore_yarn_cache:
     steps:
       - restore_cache:
