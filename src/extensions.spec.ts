@@ -16,8 +16,8 @@ describe("Markdown extensions", () => {
 
 % this is normal text
 
-%col container xs={2}
-  %col
+%col container alignItems={center} justifyContent={center}
+  %col xs={2}
     left
   %col
     **middle**

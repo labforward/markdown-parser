@@ -33,7 +33,17 @@ const handlers: Record<string, Handler> = {
 
 const flavouredSchema = merge({}, defaultSchema, {
   attributes: {
-    grid: ["container", "card", "xs", "sm", "md", "lg", "xl"],
+    grid: [
+      "container",
+      "card",
+      "alignItems",
+      "justifyContent",
+      "xs",
+      "sm",
+      "md",
+      "lg",
+      "xl",
+    ],
 
     banginterpolation: ["formula"],
     interpolation: ["formula"],
