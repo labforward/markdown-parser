@@ -18,7 +18,6 @@
     "ci:test": "NODE_OPTIONS=--experimental-vm-modules jest --ci --runInBand --reporters=default --reporters=jest-junit",
     "format": "prettier --write 'src/**/*.{ts,js}'",
     "lint": "eslint --fix 'src/**/*.{ts,js}'",
-    "pre-commit": "lint-staged",
     "prepare": "husky install",
     "sort": "sort-package-json ./package.json",
     "test": "NODE_OPTIONS=--experimental-vm-modules jest --runInBand"
