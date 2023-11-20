@@ -7,3 +7,24 @@ updates:
       time: '06:00'
       timezone: 'Europe/Berlin'
     rebase-strategy: disabled
+    groups:
+      babel:
+        patterns:
+          - "@babel/*"
+          - "babel-*"
+          - "browserslist"
+      eslint:
+        patterns:
+          - "@eslint-*"
+          - "@eslint/*"
+          - "eslint"
+          - "eslint-*"
+      markdown:
+        patterns:
+          - "hast-*"
+          - "mdast-*"
+          - "micromark-*"
+          - "rehype-*"
+          - "remark-*"
+          - "unified"
+          - "unist-*"
