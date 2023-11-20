@@ -4,9 +4,11 @@ on:
   push:
     branches: ['dependabot/npm_and_yarn/**']
 
+permissions:
+  contents: write
+
 jobs:
   dedupe:
-    name: Dedupe Dependabot PRs
     runs-on: ubuntu-latest
 
     steps:
