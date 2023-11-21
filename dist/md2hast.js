@@ -59,8 +59,8 @@ var md2hast = [
     md2mdast,
     gfm,
     extensions,
-    [mdast2hast, { allowDangerousHtml: true, handlers: handlers }],
-    raw,
+    [mdast2hast, { allowDangerousHtml: true, handlers: handlers }], // @option: allow raw html inside markdown
+    raw, // parse raw html into hast
     [sanitize, flavouredSchema],
 ];
 export default md2hast;
