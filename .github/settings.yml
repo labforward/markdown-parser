@@ -1,5 +1,8 @@
 _extends: repo-settings
 
+repository:
+  private: false
+
 branches:
   - name: main
     protection:
