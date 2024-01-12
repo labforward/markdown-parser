@@ -32,7 +32,7 @@
     "hast-util-sanitize": "^5.0.1",
     "lodash": "^4.17.21",
     "mdast-util-from-markdown": "^2.0.0",
-    "mdast-util-to-hast": "^13.0.2",
+    "mdast-util-to-hast": "^13.1.0",
     "micromark-core-commonmark": "^2.0.0",
     "micromark-factory-space": "^2.0.0",
     "micromark-util-character": "^2.0.1",
@@ -41,7 +41,7 @@
     "rehype-sanitize": "^6.0.0",
     "remark-gfm": "^4.0.0",
     "remark-parse": "^11.0.0",
-    "remark-rehype": "^11.0.0",
+    "remark-rehype": "^11.1.0",
     "unified": "^11.0.4"
   },
   "devDependencies": {
