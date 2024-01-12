@@ -4854,23 +4854,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mdast-util-to-hast@npm:^13.0.0":
-  version: 13.0.2
-  resolution: "mdast-util-to-hast@npm:13.0.2"
-  dependencies:
-    "@types/hast": "npm:^3.0.0"
-    "@types/mdast": "npm:^4.0.0"
-    "@ungap/structured-clone": "npm:^1.0.0"
-    devlop: "npm:^1.0.0"
-    micromark-util-sanitize-uri: "npm:^2.0.0"
-    trim-lines: "npm:^3.0.0"
-    unist-util-position: "npm:^5.0.0"
-    unist-util-visit: "npm:^5.0.0"
-  checksum: f6e9a5b1ab94483ce1cf2ef229578fde4fe7d085f8b9d88a048823da5f93f9469adc98839e8db73f7475e8128a6df30eccad9cd0f9ee0a1d410e74db19b82d8c
-  languageName: node
-  linkType: hard
-
-"mdast-util-to-hast@npm:^13.1.0":
+"mdast-util-to-hast@npm:^13.0.0, mdast-util-to-hast@npm:^13.1.0":
   version: 13.1.0
   resolution: "mdast-util-to-hast@npm:13.1.0"
   dependencies:
