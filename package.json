@@ -35,7 +35,7 @@
     "mdast-util-to-hast": "^13.1.0",
     "micromark-core-commonmark": "^2.0.0",
     "micromark-factory-space": "^2.0.0",
-    "micromark-util-character": "^2.0.1",
+    "micromark-util-character": "^2.1.0",
     "micromark-util-symbol": "^2.0.0",
     "rehype-raw": "^7.0.0",
     "rehype-sanitize": "^6.0.0",
