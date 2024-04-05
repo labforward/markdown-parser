@@ -10,18 +10,11 @@ aliases:
 #   COMMANDS
 # --------------------
 commands:
-  build_and_run_script:
+  run_esm:
     steps:
       - run:
-          name: Build & run script
-          # ensure the built code is compliant with ESModule syntax with ci:esm
-          command: |
-            yarn build && \
-            if [[ `git status --porcelain` ]]; then \
-            echo "🚨 Make sure to build the parser after making changes."
-            exit 1; \
-            fi \
-            && yarn ci:esm
+          name: Run ESM
+          command: yarn ci:esm
   run_jest:
     steps:
       - run:
@@ -71,7 +64,7 @@ jobs:
       - restore_yarn_cache
       - install_dependencies
       - save_yarn_cache
-      - build_and_run_script
+      - run_esm
       - run_jest
       - store_jest_results
       - store_jest_artifacts

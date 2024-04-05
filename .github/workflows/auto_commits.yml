@@ -1,0 +1,45 @@
+name: Auto Commits
+
+on:
+  pull_request
+
+permissions:
+  contents: write
+
+jobs:
+  commits:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.head_ref }}
+      - uses: fregante/setup-git-user@v1
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: lts/*
+      - run: corepack enable
+
+      - name: Dedupe dependencies
+        if: startsWith(github.head_ref, 'dependabot/')
+        env:
+          HUSKY: 0
+        run: |
+          yarn dedupe
+
+          if [[ -n $(git status -s) ]]; then
+            git add .
+            git commit -m '[dependabot skip] Dedupe dependencies'
+          fi
+
+      - name: Update build
+        run: |
+          yarn build
+
+          if [[ `git status -s` ]]; then \
+            git add .
+            git commit -m '[dependabot skip] Update Build'
+          fi
+
+      - run: git push
