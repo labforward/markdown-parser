@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 export type * from "micromark-util-types";
 
 declare module "micromark-util-types" {
