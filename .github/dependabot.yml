@@ -11,6 +11,17 @@ updates:
       - "dependencies"
       - "automerge"
       - "kodiak: merge.method = 'squash'"
+    ignore:
+      # Need to wait until every plugin support eslint 9
+      #
+      # It also dropped support for .eslintrc file in favor of flat config
+      # Which means that we might need to completely rewrite/restructure our config
+      #
+      # ref: https://eslint.org/docs/latest/use/configure/migration-guide
+      #
+      - dependency-name: eslint
+        versions:
+          - '>= 9'
     groups:
       babel:
         patterns:
@@ -23,6 +34,9 @@ updates:
           - "@eslint/*"
           - "eslint"
           - "eslint-*"
+      labforward:
+        patterns:
+          - "@labforward/*"
       markdown:
         patterns:
           - "hast-*"
