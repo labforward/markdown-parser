@@ -834,6 +834,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@labforward/config@npm:~0.1.6":
+  version: 0.1.6
+  resolution: "@labforward/config@npm:0.1.6"
+  dependencies:
+    "@babel/core": "npm:^7.24.5"
+    prettier: "npm:^3.2.5"
+    sort-package-json: "npm:^2.10.0"
+    typescript: "npm:^5.4.5"
+  checksum: 459b01b1c47adc6091053ccd709d962d518846c87fc8bc7c17906dcdb42285c7534c534c6a14c82378a02b9fb6dea5a6ceab6a2a5c0614b32e217765dc6cdf33
+  languageName: node
+  linkType: hard
+
 "@labforward/eslint-config-base@npm:~0.1.5":
   version: 0.1.5
   resolution: "@labforward/eslint-config-base@npm:0.1.5"
@@ -868,7 +880,7 @@ __metadata:
   resolution: "@labforward/markdown-parser@workspace:."
   dependencies:
     "@babel/core": "npm:^7.24.5"
-    "@labforward/config": "npm:~0.1.5"
+    "@labforward/config": "npm:~0.1.6"
     "@labforward/eslint-config-node": "npm:~0.1.5"
     "@types/jest": "npm:^29.5.12"
     "@types/lodash": "npm:^4.17.1"

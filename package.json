@@ -46,7 +46,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.24.5",
-    "@labforward/config": "~0.1.5",
+    "@labforward/config": "~0.1.6",
     "@labforward/eslint-config-node": "~0.1.5",
     "@types/jest": "^29.5.12",
     "@types/lodash": "^4.17.1",
