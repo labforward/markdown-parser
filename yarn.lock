@@ -897,7 +897,7 @@ __metadata:
     sort-package-json: "npm:^2.10.0"
     ts-jest: "npm:^29.1.2"
     ts-node: "npm:^10.9.2"
-    tsc-alias: "npm:^1.8.9"
+    tsc-alias: "npm:^1.8.10"
     typescript: "npm:^5.4.5"
     unified: "npm:^11.0.4"
   languageName: unknown
@@ -6692,9 +6692,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tsc-alias@npm:^1.8.9":
-  version: 1.8.9
-  resolution: "tsc-alias@npm:1.8.9"
+"tsc-alias@npm:^1.8.10":
+  version: 1.8.10
+  resolution: "tsc-alias@npm:1.8.10"
   dependencies:
     chokidar: "npm:^3.5.3"
     commander: "npm:^9.0.0"
@@ -6704,7 +6704,7 @@ __metadata:
     plimit-lit: "npm:^1.2.6"
   bin:
     tsc-alias: dist/bin/index.js
-  checksum: f218c7bc06c30eeb30578273081386266254d438368bd9ddba0e9c4fb27b57b5ddb544b2c769630d059c569356da5a37131c3a2ef28e0761d4dcd4ecbf4c7194
+  checksum: 6f319d37b35d2f660c09c4a5413305c78943dd09bdaf395f4c1da69e19ad15b4d149db28d9251acd8bb52e755af55895018b2fe55f1511774da2e9e30a5c826a
   languageName: node
   linkType: hard
 
