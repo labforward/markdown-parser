@@ -880,7 +880,7 @@ __metadata:
     license-checker-rseidelsohn: "npm:^4.3.0"
     lint-staged: "npm:^15.2.5"
     lodash: "npm:^4.17.21"
-    mdast-util-from-markdown: "npm:^2.0.0"
+    mdast-util-from-markdown: "npm:^2.0.1"
     mdast-util-to-hast: "npm:^13.1.0"
     micromark-core-commonmark: "npm:^2.0.1"
     micromark-factory-space: "npm:^2.0.0"
@@ -4627,9 +4627,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mdast-util-from-markdown@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "mdast-util-from-markdown@npm:2.0.0"
+"mdast-util-from-markdown@npm:^2.0.0, mdast-util-from-markdown@npm:^2.0.1":
+  version: 2.0.1
+  resolution: "mdast-util-from-markdown@npm:2.0.1"
   dependencies:
     "@types/mdast": "npm:^4.0.0"
     "@types/unist": "npm:^3.0.0"
@@ -4643,7 +4643,7 @@ __metadata:
     micromark-util-symbol: "npm:^2.0.0"
     micromark-util-types: "npm:^2.0.0"
     unist-util-stringify-position: "npm:^4.0.0"
-  checksum: fb66e917f66e33fc60d6964264c4abd519fd8829a4a58ff9c61b2ba5c337554fb954b9ec31ca1c34e83c1163a73f310c39072d656f9a2d3184fe39c87cbba65a
+  checksum: 496596bc6419200ff6258531a0ebcaee576a5c169695f5aa296a79a85f2a221bb9247d565827c709a7c2acfb56ae3c3754bf483d86206617bd299a9658c8121c
   languageName: node
   linkType: hard
 
