@@ -840,7 +840,7 @@ __metadata:
     husky: "npm:^9.1.5"
     jest: "npm:^29.7.0"
     jest-junit: "npm:^16.0.0"
-    license-checker-rseidelsohn: "npm:^4.3.0"
+    license-checker-rseidelsohn: "npm:^4.4.1"
     lint-staged: "npm:^15.2.10"
     lodash: "npm:^4.17.21"
     mdast-util-from-markdown: "npm:^2.0.1"
@@ -4387,9 +4387,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"license-checker-rseidelsohn@npm:^4.3.0":
-  version: 4.3.0
-  resolution: "license-checker-rseidelsohn@npm:4.3.0"
+"license-checker-rseidelsohn@npm:^4.4.1":
+  version: 4.4.1
+  resolution: "license-checker-rseidelsohn@npm:4.4.1"
   dependencies:
     chalk: "npm:4.1.2"
     debug: "npm:^4.3.4"
@@ -4404,7 +4404,7 @@ __metadata:
     treeify: "npm:^1.1.0"
   bin:
     license-checker-rseidelsohn: bin/license-checker-rseidelsohn
-  checksum: e09ede6174413d5081cd25a302fdd8130036dcf08995e2eaf7f5bac82d240a1bed1c5630e1e606351254b4197305a4f350b56e19cc0e76b48eac78cff120682c
+  checksum: 6687a5e2c1f7ad9ead6038135ede660e21bf11653b24a5b434df74fa7f2f69819fd1d220572d1cfdfeff1ab23079a50a092d17eb1e807942ef1fcd5637abbfd0
   languageName: node
   linkType: hard
 
