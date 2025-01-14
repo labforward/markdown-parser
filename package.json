@@ -59,7 +59,7 @@
     "lint-staged": "^15.3.0",
     "micromark-util-types": "^2.0.1",
     "prettier": "^3.4.2",
-    "sort-package-json": "^2.12.0",
+    "sort-package-json": "^2.13.0",
     "ts-jest": "^29.2.5",
     "ts-node": "^10.9.2",
     "tsc-alias": "^1.8.10",
