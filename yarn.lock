@@ -836,7 +836,7 @@ __metadata:
     remark-gfm: "npm:^4.0.0"
     remark-parse: "npm:^11.0.0"
     remark-rehype: "npm:^11.1.1"
-    sort-package-json: "npm:^2.13.0"
+    sort-package-json: "npm:^2.14.0"
     ts-jest: "npm:^29.2.5"
     ts-node: "npm:^10.9.2"
     tsc-alias: "npm:^1.8.10"
@@ -6151,9 +6151,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sort-package-json@npm:^2.10.0, sort-package-json@npm:^2.13.0":
-  version: 2.13.0
-  resolution: "sort-package-json@npm:2.13.0"
+"sort-package-json@npm:^2.10.0, sort-package-json@npm:^2.14.0":
+  version: 2.14.0
+  resolution: "sort-package-json@npm:2.14.0"
   dependencies:
     detect-indent: "npm:^7.0.1"
     detect-newline: "npm:^4.0.0"
@@ -6165,7 +6165,7 @@ __metadata:
     tinyglobby: "npm:^0.2.9"
   bin:
     sort-package-json: cli.js
-  checksum: 16765fead87546d7c51ee0863e43d69a9bc0447dd0ede6551c693a74e8a75fdf4a1a78643424ae5f7a702643901dc1813a277f155554fd3c3f727fa8768f1d76
+  checksum: bcc114a3b5e11d4539ba46dd4eeda6d6909202cb1a9526c230850f1edfdfcf8712e9479b71f98d8f6cb8554740294acdfcaae84461dcecd90592867e1ba90924
   languageName: node
   linkType: hard
 
