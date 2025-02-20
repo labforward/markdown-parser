@@ -48,8 +48,8 @@ function tokenizeInterpolationLink(
 
   function label(code: Code) {
     if (code === codes.rightSquareBracket) {
-      effects.exit("interpolationlinkLabel");
       effects.consume(code);
+      effects.exit("interpolationlinkLabel");
       return afterLabel;
     }
 
@@ -70,8 +70,8 @@ function tokenizeInterpolationLink(
 
   function destination(code: Code) {
     if (code === codes.rightParenthesis) {
-      effects.exit("interpolationlinkDestination");
       effects.consume(code);
+      effects.exit("interpolationlinkDestination");
       effects.exit("interpolationlink");
       return ok;
     }

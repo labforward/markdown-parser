@@ -31,8 +31,6 @@ function tokenizeInterpolation(
 
   const self = this;
 
-  console.log("HOTPINK tokenizeInterpolation", { this: this, effects });
-
   // We add a dummy event here in order to be able to consume codes
   effects.enter("interpolationTemp");
 

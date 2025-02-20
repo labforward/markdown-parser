@@ -10,7 +10,15 @@ export const exit = {
 };
 
 function onEnterInterpolationLink(this: CompileContext, token: Token) {
-  this.enter({ type: "interpolationlink", children: [] }, token);
+  this.enter(
+    {
+      type: "interpolationlink",
+      children: [],
+      properties: {},
+      props: { hotpink: true },
+    },
+    token
+  );
 }
 
 function onEnterInterpolationLinkDestination(

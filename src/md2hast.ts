@@ -14,7 +14,7 @@ import extensions from "./extensions.js";
 const element = (
   tagName: string,
   properties: Properties,
-  children: ElementContent[] = []
+  children: ElementContent[] = [],
 ): Element => ({
   children,
   properties,
@@ -29,8 +29,12 @@ const handlers: Record<string, Handler> = {
 
   banginterpolation: (_state, node) => element("banginterpolation", node.props),
   interpolation: (_state, node) => element("interpolation", node.props),
-  interpolationlink: (state, node) =>
-    element("interpolationlink", node.props, state.all(node)),
+  interpolationlink: (state, node, parent) => {
+    if (node.type === "link") {
+      return state.handlers.link(state, node, parent);
+    }
+    return element("interpolationlink", node.properties, state.all(node));
+  },
 };
 
 const flavouredSchema = merge({}, defaultSchema, {

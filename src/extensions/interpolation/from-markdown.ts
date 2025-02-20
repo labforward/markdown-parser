@@ -23,8 +23,6 @@ function onEnterBangInterpolation(this: CompileContext, token: Token) {
 }
 
 function onEnterInterpolation(this: CompileContext, token: Token) {
-  console.log("HOTPINK onEnterInterpolation", { this: this, token });
-
   this.enter(
     {
       children: [],

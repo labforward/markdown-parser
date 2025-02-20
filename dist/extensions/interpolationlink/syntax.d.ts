@@ -3,9 +3,9 @@ declare const _default: {
     text: {
         [x: number]: {
             name: string;
-            tokenize: typeof tokenizeInterpolation;
+            tokenize: typeof tokenizeInterpolationLink;
         };
     };
 };
 export default _default;
-declare function tokenizeInterpolation(this: TokenizeContext, effects: Effects, ok: State, nok: State): (code: Code) => void | any;
+declare function tokenizeInterpolationLink(this: TokenizeContext, effects: Effects, ok: State, nok: State): (code: Code) => void | State;

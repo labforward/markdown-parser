@@ -31,6 +31,12 @@ var handlers = {
     },
     banginterpolation: function (_state, node) { return element("banginterpolation", node.props); },
     interpolation: function (_state, node) { return element("interpolation", node.props); },
+    interpolationlink: function (state, node, parent) {
+        if (node.type === "link") {
+            return state.handlers.link(state, node, parent);
+        }
+        return element("interpolationlink", node.properties, state.all(node));
+    },
 };
 var flavouredSchema = merge({}, defaultSchema, {
     attributes: {
@@ -54,13 +60,14 @@ flavouredSchema.tagNames = __spreadArray(__spreadArray([], (flavouredSchema.tagN
     "grid",
     "banginterpolation",
     "interpolation",
+    "interpolationlink",
 ], false);
 var md2hast = [
     md2mdast,
     gfm,
     extensions,
-    [mdast2hast, { allowDangerousHtml: true, handlers: handlers }], // @option: allow raw html inside markdown
-    raw, // parse raw html into hast
+    [mdast2hast, { allowDangerousHtml: true, handlers: handlers }],
+    raw,
     [sanitize, flavouredSchema],
 ];
 export default md2hast;
