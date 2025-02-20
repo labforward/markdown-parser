@@ -14,6 +14,7 @@ declare module "micromark-util-types" {
     gridPrefix: "gridPrefix";
     gridProps: "gridProps";
     interpolation: "interpolation";
+    interpolationlink: "interpolationlink";
     interpolationTemp: "interpolationTemp";
   }
 }
