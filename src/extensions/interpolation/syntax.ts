@@ -24,12 +24,14 @@ function tokenizeInterpolation(
   this: TokenizeContext,
   effects: Effects,
   ok: State,
-  nok: State,
+  nok: State
 ) {
   let type: "interpolation" | "bangInterpolation" = "interpolation";
   let markers = 0;
 
   const self = this;
+
+  console.log("HOTPINK tokenizeInterpolation", { this: this, effects });
 
   // We add a dummy event here in order to be able to consume codes
   effects.enter("interpolationTemp");
@@ -37,6 +39,8 @@ function tokenizeInterpolation(
   return onInterpolationStart;
 
   function onInterpolationStart(code: Code) {
+    console.log("HOTPINK onInterpolationStart", code);
+
     if (code === codes.exclamationMark) {
       if (type === "bangInterpolation") return nok(code);
 
