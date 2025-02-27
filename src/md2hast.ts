@@ -14,7 +14,7 @@ import extensions from "./extensions.js";
 const element = (
   tagName: string,
   properties: Properties,
-  children: ElementContent[] = [],
+  children: ElementContent[] = []
 ): Element => ({
   children,
   properties,
@@ -29,6 +29,8 @@ const handlers: Record<string, Handler> = {
 
   banginterpolation: (_state, node) => element("banginterpolation", node.props),
   interpolation: (_state, node) => element("interpolation", node.props),
+  interpolationLink: (state, node) =>
+    element("interpolationLink", node.props, state.all(node)),
 };
 
 const flavouredSchema = merge({}, defaultSchema, {
@@ -56,6 +58,7 @@ flavouredSchema.tagNames = [
   "grid",
   "banginterpolation",
   "interpolation",
+  "interpolationLink",
 ];
 
 const md2hast: PluggableList = [
