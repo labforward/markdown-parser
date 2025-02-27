@@ -14,7 +14,7 @@ import extensions from "./extensions.js";
 const element = (
   tagName: string,
   properties: Properties,
-  children: ElementContent[] = [],
+  children: ElementContent[] = []
 ): Element => ({
   children,
   properties,
@@ -53,6 +53,7 @@ const flavouredSchema = merge({}, defaultSchema, {
 
     banginterpolation: ["formula"],
     interpolation: ["formula"],
+    interpolationlink: ["href", "formula", "hotpink"],
   },
 });
 

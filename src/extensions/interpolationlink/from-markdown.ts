@@ -15,7 +15,11 @@ function onEnterInterpolationLink(this: CompileContext, token: Token) {
       type: "interpolationlink",
       children: [],
       properties: {},
-      props: { hotpink: true },
+      props: {
+        hotpink: true,
+        formuala: this.sliceSerialize(token),
+        href: "foo",
+      },
     },
     token
   );

@@ -10,7 +10,11 @@ function onEnterInterpolationLink(token) {
         type: "interpolationlink",
         children: [],
         properties: {},
-        props: { hotpink: true },
+        props: {
+            hotpink: true,
+            formuala: this.sliceSerialize(token),
+            href: "foo",
+        },
     }, token);
 }
 function onEnterInterpolationLinkDestination(token) {

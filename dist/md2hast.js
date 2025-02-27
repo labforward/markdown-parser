@@ -53,6 +53,7 @@ var flavouredSchema = merge({}, defaultSchema, {
         ],
         banginterpolation: ["formula"],
         interpolation: ["formula"],
+        interpolationlink: ["href", "formula", "hotpink"],
     },
 });
 flavouredSchema.tagNames = __spreadArray(__spreadArray([], (flavouredSchema.tagNames || []), true), [
