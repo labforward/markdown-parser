@@ -26,13 +26,6 @@ function tokenizeInterpolationLink(
   // const self = this;
   // const markers = 0;
 
-  console.log("HOTPINK tokenizeInterpolationLink", {
-    effects,
-    nok,
-    ok,
-    this: this,
-  });
-
   return start;
 
   function start(code: Code) {

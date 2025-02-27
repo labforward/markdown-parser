@@ -53,7 +53,7 @@ const flavouredSchema = merge({}, defaultSchema, {
 
     banginterpolation: ["formula"],
     interpolation: ["formula"],
-    interpolationlink: ["href", "formula", "hotpink"],
+    interpolationlink: ["href", "href2", "formula", "hotpink"],
   },
 });
 

@@ -21,9 +21,18 @@ function onEnterInterpolationLinkDestination(token) {
     var link = this.stack[this.stack.length - 1];
     var raw = this.sliceSerialize(token);
     var match = raw.match(/{{(.*?)}}/);
+    console.log("HOTPINK onEnter", {
+        match: match,
+        raw: raw,
+        token: token,
+        stack: this.stack,
+        link: link,
+    });
     if (match) {
         link.properties = {
             href: raw.replace(match[0], ""),
+            href2: raw.replace(match[0], ""),
+            hotpink: "foobar",
             formula: match[1],
         };
     }

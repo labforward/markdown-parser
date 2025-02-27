@@ -12,12 +12,6 @@ export default {
 function tokenizeInterpolationLink(effects, ok, nok) {
     // const self = this;
     // const markers = 0;
-    console.log("HOTPINK tokenizeInterpolationLink", {
-        effects: effects,
-        nok: nok,
-        ok: ok,
-        this: this,
-    });
     return start;
     function start(code) {
         if (code === codes.leftSquareBracket) {
