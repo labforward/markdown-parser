@@ -34,10 +34,10 @@ function tokenizeInterpolationLink(effects, ok, nok) {
     }
     function label(code) {
         if (code === codes.rightSquareBracket) {
+            effects.exit("interpolationlinkLabel");
             effects.enter("dummyEvent");
             effects.consume(code);
             effects.exit("dummyEvent");
-            effects.exit("interpolationlinkLabel");
             return afterLabel;
         }
         if (isEndOfLine(code)) {

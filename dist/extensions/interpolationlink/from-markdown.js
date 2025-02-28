@@ -11,7 +11,6 @@ var __assign = (this && this.__assign) || function () {
 };
 export var enter = {
     interpolationlink: onEnterInterpolationLink,
-    interpolationlinkLabel: onEnterInterpolationLinkLabel,
     interpolationlinkDestination: onEnterInterpolationLinkDestination,
 };
 export var exit = {
@@ -25,14 +24,10 @@ function onEnterInterpolationLink(token) {
         properties: {},
     }, token);
 }
-function onEnterInterpolationLinkLabel(token) {
-    this.enter({ type: "text", value: "" }, token);
-}
 function onExitInterpolationLinkLabel(token) {
     var label = this.sliceSerialize(token);
     var link = this.stack[this.stack.length - 1];
     link.properties.label = label;
-    this.exit(token);
 }
 function onEnterInterpolationLinkDestination(token) {
     var link = this.stack[this.stack.length - 1];
@@ -48,9 +43,6 @@ function onEnterInterpolationLinkDestination(token) {
     if (matches.length > 0) {
         link.properties = __assign(__assign({}, link.properties), { formulas: matches.map(function (m) { return m[1]; }), location: raw });
     }
-    // else {
-    //   link.properties = { ...link.properties, location: raw };
-    // }
 }
 function onExitInterpolationLink(token) {
     this.exit(token);
