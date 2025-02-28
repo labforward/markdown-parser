@@ -8,4 +8,4 @@ declare const _default: {
     };
 };
 export default _default;
-declare function tokenizeInterpolationLink(this: TokenizeContext, effects: Effects, ok: State, nok: State): (code: Code) => void | State;
+declare function tokenizeInterpolationLink(this: TokenizeContext, effects: Effects, ok: State, nok: State): (code: Code) => void | ((code: Code) => void | any);

@@ -37,8 +37,6 @@ function tokenizeInterpolation(
   return onInterpolationStart;
 
   function onInterpolationStart(code: Code) {
-    console.log("HOTPINK onInterpolationStart", code);
-
     if (code === codes.exclamationMark) {
       if (type === "bangInterpolation") return nok(code);
 

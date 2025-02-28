@@ -10,34 +10,31 @@ function onEnterInterpolationLink(token) {
         type: "interpolationlink",
         children: [],
         properties: {},
-        // props: {
-        //   hotpink: true,
-        //   formuala: this.sliceSerialize(token),
-        //   href: "foo",
-        // },
     }, token);
 }
 function onEnterInterpolationLinkDestination(token) {
     var link = this.stack[this.stack.length - 1];
     var raw = this.sliceSerialize(token);
-    var match = raw.match(/{{(.*?)}}/);
+    // const matches = [...raw.matchAll(/{{(.*?)}}/g)];
+    var matches = [];
+    var regex = /{{(.*?)}}/g;
+    var match;
+    // eslint-disable-next-line no-cond-assign
+    while ((match = regex.exec(raw)) !== null) {
+        matches.push(match);
+    }
     console.log("HOTPINK onEnter", {
-        match: match,
+        matches: matches,
         raw: raw,
         token: token,
         stack: this.stack,
         link: link,
     });
-    if (match) {
+    if (matches.length > 0) {
         link.properties = {
-            href: raw.replace(match[0], ""),
-            href2: raw.replace(match[0], ""),
-            hotpink: "foobar",
-            formula: match[1],
+            formulas: matches.map(function (m) { return m[1]; }),
+            location: raw.slice(1, -1),
         };
-    }
-    else {
-        link.properties = { href: raw };
     }
 }
 function onExitInterpolationLink(token) {

@@ -4,13 +4,21 @@ var interpolationLinkConstruct = {
     name: "interpolationlink",
     tokenize: tokenizeInterpolationLink,
 };
+var isEndOfLine = function (code) {
+    return (code === codes.eof ||
+        code === codes.lineFeed ||
+        code === codes.carriageReturn ||
+        code === codes.carriageReturnLineFeed);
+};
+// const startMarker = 0;
+// const endMarker = 0;
 export default {
     text: (_a = {},
         _a[codes.leftSquareBracket] = interpolationLinkConstruct,
         _a),
 };
 function tokenizeInterpolationLink(effects, ok, nok) {
-    // const self = this;
+    var self = this;
     // const markers = 0;
     return start;
     function start(code) {
@@ -28,6 +36,9 @@ function tokenizeInterpolationLink(effects, ok, nok) {
             effects.exit("interpolationlinkLabel");
             return afterLabel;
         }
+        if (isEndOfLine(code)) {
+            return nok(code);
+        }
         effects.consume(code);
         return label;
     }
@@ -41,10 +52,20 @@ function tokenizeInterpolationLink(effects, ok, nok) {
     }
     function destination(code) {
         if (code === codes.rightParenthesis) {
+            // empty parenthesis, no target location
+            if (self.previous === codes.leftParenthesis) {
+                return nok(code);
+            }
+            // if (startMarker < 2 || endMarker < 2) {
+            //   return nok(code);
+            // }
             effects.consume(code);
             effects.exit("interpolationlinkDestination");
             effects.exit("interpolationlink");
             return ok;
+        }
+        if (isEndOfLine(code) || code === codes.virtualSpace) {
+            return nok(code);
         }
         effects.consume(code);
         return destination;

@@ -15,11 +15,6 @@ function onEnterInterpolationLink(this: CompileContext, token: Token) {
       type: "interpolationlink",
       children: [],
       properties: {},
-      // props: {
-      //   hotpink: true,
-      //   formuala: this.sliceSerialize(token),
-      //   href: "foo",
-      // },
     },
     token
   );
@@ -31,25 +26,30 @@ function onEnterInterpolationLinkDestination(
 ) {
   const link = this.stack[this.stack.length - 1];
   const raw = this.sliceSerialize(token);
-  const match = raw.match(/{{(.*?)}}/);
+  // const matches = [...raw.matchAll(/{{(.*?)}}/g)];
+
+  const matches = [];
+  const regex = /{{(.*?)}}/g;
+  let match;
+
+  // eslint-disable-next-line no-cond-assign
+  while ((match = regex.exec(raw)) !== null) {
+    matches.push(match);
+  }
 
   console.log("HOTPINK onEnter", {
-    match,
+    matches,
     raw,
     token,
     stack: this.stack,
     link,
   });
 
-  if (match) {
+  if (matches.length > 0) {
     link.properties = {
-      href: raw.replace(match[0], ""),
-      href2: raw.replace(match[0], ""),
-      hotpink: "foobar",
-      formula: match[1],
+      formulas: matches.map((m) => m[1]),
+      location: raw.slice(1, -1),
     };
-  } else {
-    link.properties = { href: raw };
   }
 }
 

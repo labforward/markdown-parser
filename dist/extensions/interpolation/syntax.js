@@ -21,7 +21,6 @@ function tokenizeInterpolation(effects, ok, nok) {
     effects.enter("interpolationTemp");
     return onInterpolationStart;
     function onInterpolationStart(code) {
-        console.log("HOTPINK onInterpolationStart", code);
         if (code === codes.exclamationMark) {
             if (type === "bangInterpolation")
                 return nok(code);
