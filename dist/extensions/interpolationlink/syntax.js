@@ -23,16 +23,20 @@ function tokenizeInterpolationLink(effects, ok, nok) {
     return start;
     function start(code) {
         if (code === codes.leftSquareBracket) {
+            effects.enter("dummyEvent");
+            effects.consume(code);
+            effects.exit("dummyEvent");
             effects.enter("interpolationlink");
             effects.enter("interpolationlinkLabel");
-            effects.consume(code);
             return label;
         }
         return nok(code);
     }
     function label(code) {
         if (code === codes.rightSquareBracket) {
+            effects.enter("dummyEvent");
             effects.consume(code);
+            effects.exit("dummyEvent");
             effects.exit("interpolationlinkLabel");
             return afterLabel;
         }
@@ -44,6 +48,12 @@ function tokenizeInterpolationLink(effects, ok, nok) {
     }
     function afterLabel(code) {
         if (code === codes.leftParenthesis) {
+            effects.enter("dummyEvent");
+            effects.consume(code);
+            effects.exit("dummyEvent");
+            return afterLabel;
+        }
+        if (self.previous === codes.leftParenthesis) {
             effects.enter("interpolationlinkDestination");
             effects.consume(code);
             return destination;
@@ -59,9 +69,11 @@ function tokenizeInterpolationLink(effects, ok, nok) {
             // if (startMarker < 2 || endMarker < 2) {
             //   return nok(code);
             // }
-            effects.consume(code);
             effects.exit("interpolationlinkDestination");
             effects.exit("interpolationlink");
+            effects.enter("dummyEvent");
+            effects.consume(code);
+            effects.exit("dummyEvent");
             return ok;
         }
         if (isEndOfLine(code) || code === codes.virtualSpace) {

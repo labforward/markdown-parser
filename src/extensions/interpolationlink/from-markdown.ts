@@ -2,11 +2,13 @@ import type { CompileContext, Token } from "mdast-util-from-markdown";
 
 export const enter = {
   interpolationlink: onEnterInterpolationLink,
+  interpolationlinkLabel: onEnterInterpolationLinkLabel,
   interpolationlinkDestination: onEnterInterpolationLinkDestination,
 };
 
 export const exit = {
   interpolationlink: onExitInterpolationLink,
+  interpolationlinkLabel: onExitInterpolationLinkLabel,
 };
 
 function onEnterInterpolationLink(this: CompileContext, token: Token) {
@@ -18,6 +20,18 @@ function onEnterInterpolationLink(this: CompileContext, token: Token) {
     },
     token
   );
+}
+
+function onEnterInterpolationLinkLabel(this: CompileContext, token: Token) {
+  this.enter({ type: "text", value: "" }, token);
+}
+
+function onExitInterpolationLinkLabel(this: CompileContext, token: Token) {
+  const label = this.sliceSerialize(token);
+  const link = this.stack[this.stack.length - 1];
+
+  link.properties.label = label;
+  this.exit(token);
 }
 
 function onEnterInterpolationLinkDestination(
@@ -37,20 +51,16 @@ function onEnterInterpolationLinkDestination(
     matches.push(match);
   }
 
-  console.log("HOTPINK onEnter", {
-    matches,
-    raw,
-    token,
-    stack: this.stack,
-    link,
-  });
-
   if (matches.length > 0) {
     link.properties = {
+      ...link.properties,
       formulas: matches.map((m) => m[1]),
-      location: raw.slice(1, -1),
+      location: raw,
     };
   }
+  // else {
+  //   link.properties = { ...link.properties, location: raw };
+  // }
 }
 
 function onExitInterpolationLink(this: CompileContext, token: Token) {

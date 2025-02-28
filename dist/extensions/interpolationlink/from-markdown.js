@@ -1,9 +1,22 @@
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 export var enter = {
     interpolationlink: onEnterInterpolationLink,
+    interpolationlinkLabel: onEnterInterpolationLinkLabel,
     interpolationlinkDestination: onEnterInterpolationLinkDestination,
 };
 export var exit = {
     interpolationlink: onExitInterpolationLink,
+    interpolationlinkLabel: onExitInterpolationLinkLabel,
 };
 function onEnterInterpolationLink(token) {
     this.enter({
@@ -11,6 +24,15 @@ function onEnterInterpolationLink(token) {
         children: [],
         properties: {},
     }, token);
+}
+function onEnterInterpolationLinkLabel(token) {
+    this.enter({ type: "text", value: "" }, token);
+}
+function onExitInterpolationLinkLabel(token) {
+    var label = this.sliceSerialize(token);
+    var link = this.stack[this.stack.length - 1];
+    link.properties.label = label;
+    this.exit(token);
 }
 function onEnterInterpolationLinkDestination(token) {
     var link = this.stack[this.stack.length - 1];
@@ -23,19 +45,12 @@ function onEnterInterpolationLinkDestination(token) {
     while ((match = regex.exec(raw)) !== null) {
         matches.push(match);
     }
-    console.log("HOTPINK onEnter", {
-        matches: matches,
-        raw: raw,
-        token: token,
-        stack: this.stack,
-        link: link,
-    });
     if (matches.length > 0) {
-        link.properties = {
-            formulas: matches.map(function (m) { return m[1]; }),
-            location: raw.slice(1, -1),
-        };
+        link.properties = __assign(__assign({}, link.properties), { formulas: matches.map(function (m) { return m[1]; }), location: raw });
     }
+    // else {
+    //   link.properties = { ...link.properties, location: raw };
+    // }
 }
 function onExitInterpolationLink(token) {
     this.exit(token);

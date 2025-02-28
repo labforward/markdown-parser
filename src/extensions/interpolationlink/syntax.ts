@@ -42,9 +42,11 @@ function tokenizeInterpolationLink(
 
   function start(code: Code) {
     if (code === codes.leftSquareBracket) {
+      effects.enter("dummyEvent");
+      effects.consume(code);
+      effects.exit("dummyEvent");
       effects.enter("interpolationlink");
       effects.enter("interpolationlinkLabel");
-      effects.consume(code);
       return label;
     }
 
@@ -53,7 +55,9 @@ function tokenizeInterpolationLink(
 
   function label(code: Code) {
     if (code === codes.rightSquareBracket) {
+      effects.enter("dummyEvent");
       effects.consume(code);
+      effects.exit("dummyEvent");
       effects.exit("interpolationlinkLabel");
       return afterLabel;
     }
@@ -69,11 +73,16 @@ function tokenizeInterpolationLink(
 
   function afterLabel(code: Code) {
     if (code === codes.leftParenthesis) {
+      effects.enter("dummyEvent");
+      effects.consume(code);
+      effects.exit("dummyEvent");
+      return afterLabel;
+    }
+    if (self.previous === codes.leftParenthesis) {
       effects.enter("interpolationlinkDestination");
       effects.consume(code);
       return destination;
     }
-
     return nok(code);
   }
 
@@ -87,9 +96,11 @@ function tokenizeInterpolationLink(
       // if (startMarker < 2 || endMarker < 2) {
       //   return nok(code);
       // }
-      effects.consume(code);
       effects.exit("interpolationlinkDestination");
       effects.exit("interpolationlink");
+      effects.enter("dummyEvent");
+      effects.consume(code);
+      effects.exit("dummyEvent");
       return ok;
     }
 
