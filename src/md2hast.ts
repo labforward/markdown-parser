@@ -6,7 +6,7 @@ import sanitize from "rehype-sanitize";
 import gfm from "remark-gfm";
 import md2mdast from "remark-parse";
 import mdast2hast from "remark-rehype";
-import type { PluggableList } from "unified";
+import type { PluggableList, Pluggable } from "unified";
 import type { Element, ElementContent, Properties } from "hast";
 
 import extensions from "./extensions.js";
@@ -29,11 +29,15 @@ const handlers: Record<string, Handler> = {
 
   banginterpolation: (_state, node) => element("banginterpolation", node.props),
   interpolation: (_state, node) => element("interpolation", node.props),
-  interpolationlink: (state, node, parent) => {
-    if (node.type === "link") {
-      return state.handlers.link(state, node, parent);
-    }
-    return element("interpolationlink", node.properties, state.all(node));
+  interpolationlink: (state, node) => {
+    const properties = {
+      ...node.properties,
+      formulas: Array.isArray(node.properties.formulas)
+        ? node.properties.formulas
+        : node.properties.formulas.split(" "),
+    };
+
+    return element("interpolationlink", properties, state.all(node));
   },
 };
 
@@ -53,7 +57,7 @@ const flavouredSchema = merge({}, defaultSchema, {
 
     banginterpolation: ["formula"],
     interpolation: ["formula"],
-    interpolationlink: ["location", "formula", "formulas"],
+    interpolationlink: ["label", "location", "formulas"],
   },
 });
 
@@ -67,7 +71,7 @@ flavouredSchema.tagNames = [
 ];
 
 const md2hast: PluggableList = [
-  md2mdast,
+  md2mdast as Pluggable,
   gfm,
   extensions,
   [mdast2hast, { allowDangerousHtml: true, handlers }], // @option: allow raw html inside markdown
