@@ -1,14 +1,14 @@
 import type { CompileContext, Token } from "mdast-util-from-markdown";
 export declare const enter: {
-    interpolationlink: typeof onEnterInterpolationLink;
-    interpolationlinkDestination: typeof onEnterInterpolationLinkDestination;
+    interpolationLink: typeof onEnterInterpolationLink;
+    interpolationLinkTarget: typeof onEnterInterpolationLinkTarget;
 };
 export declare const exit: {
-    interpolationlink: typeof onExitInterpolationLink;
-    interpolationlinkLabel: typeof onExitInterpolationLinkLabel;
+    interpolationLink: typeof onExitInterpolationLink;
+    interpolationLinkLabel: typeof onExitInterpolationLinkLabel;
 };
 declare function onEnterInterpolationLink(this: CompileContext, token: Token): void;
 declare function onExitInterpolationLinkLabel(this: CompileContext, token: Token): void;
-declare function onEnterInterpolationLinkDestination(this: CompileContext, token: Token): void;
+declare function onEnterInterpolationLinkTarget(this: CompileContext, token: Token): void;
 declare function onExitInterpolationLink(this: CompileContext, token: Token): void;
 export {};

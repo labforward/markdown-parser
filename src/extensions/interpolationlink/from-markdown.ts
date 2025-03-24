@@ -1,21 +1,22 @@
 import type { CompileContext, Token } from "mdast-util-from-markdown";
 
 export const enter = {
-  interpolationlink: onEnterInterpolationLink,
-  interpolationlinkDestination: onEnterInterpolationLinkDestination,
+  interpolationLink: onEnterInterpolationLink,
+  interpolationLinkTarget: onEnterInterpolationLinkTarget,
 };
 
 export const exit = {
-  interpolationlink: onExitInterpolationLink,
-  interpolationlinkLabel: onExitInterpolationLinkLabel,
+  interpolationLink: onExitInterpolationLink,
+  interpolationLinkLabel: onExitInterpolationLinkLabel,
 };
 
 function onEnterInterpolationLink(this: CompileContext, token: Token) {
   this.enter(
     {
+      // @ts-ignore
       type: "interpolationlink",
       children: [],
-      properties: {},
+      props: {},
     },
     token
   );
@@ -25,13 +26,11 @@ function onExitInterpolationLinkLabel(this: CompileContext, token: Token) {
   const label = this.sliceSerialize(token);
   const link = this.stack[this.stack.length - 1];
 
-  link.properties.label = label;
+  // @ts-ignore
+  link.props.label = label;
 }
 
-function onEnterInterpolationLinkDestination(
-  this: CompileContext,
-  token: Token
-) {
+function onEnterInterpolationLinkTarget(this: CompileContext, token: Token) {
   const link = this.stack[this.stack.length - 1];
   const raw = this.sliceSerialize(token);
   // const matches = [...raw.matchAll(/{{(.*?)}}/g)];
@@ -46,8 +45,10 @@ function onEnterInterpolationLinkDestination(
   }
 
   if (matches.length > 0) {
-    link.properties = {
-      ...link.properties,
+    // @ts-ignore
+    link.props = {
+      // @ts-ignore
+      ...link.props,
       formulas: matches.map((m) => m[1]),
       location: raw,
     };

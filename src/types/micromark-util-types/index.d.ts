@@ -7,6 +7,7 @@ declare module "micromark-util-types" {
 
   export interface TokenTypeMap extends TokenTypeMap {
     bangInterpolation: "bangInterpolation";
+    dummyEvent: "dummyEvent";
     grid: "grid";
     gridContainer: "gridContainer";
     gridContainerNewline: "gridContainerNewline";
@@ -14,7 +15,9 @@ declare module "micromark-util-types" {
     gridPrefix: "gridPrefix";
     gridProps: "gridProps";
     interpolation: "interpolation";
-    interpolationlink: "interpolationlink";
+    interpolationLink: "interpolationLink";
+    interpolationLinkLabel: "interpolationLinkLabel";
+    interpolationLinkTarget: "interpolationLinkTarget";
     interpolationTemp: "interpolationTemp";
   }
 }

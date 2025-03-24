@@ -14,7 +14,7 @@ import extensions from "./extensions.js";
 const element = (
   tagName: string,
   properties: Properties,
-  children: ElementContent[] = []
+  children: ElementContent[] = [],
 ): Element => ({
   children,
   properties,
@@ -24,20 +24,13 @@ const element = (
 
 const handlers: Record<string, Handler> = {
   grid: (state, node) => element("grid", node.props, state.all(node)),
-  gridcontainer: (state, node) =>
-    element("gridcontainer", node.props, state.all(node)),
-
+  gridcontainer: (state, node) => {
+    return element("gridcontainer", node.props, state.all(node));
+  },
   banginterpolation: (_state, node) => element("banginterpolation", node.props),
   interpolation: (_state, node) => element("interpolation", node.props),
   interpolationlink: (state, node) => {
-    const properties = {
-      ...node.properties,
-      formulas: Array.isArray(node.properties.formulas)
-        ? node.properties.formulas
-        : node.properties.formulas.split(" "),
-    };
-
-    return element("interpolationlink", properties, state.all(node));
+    return element("interpolationlink", node.props, state.all(node));
   },
 };
 

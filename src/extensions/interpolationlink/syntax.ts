@@ -33,7 +33,7 @@ function tokenizeInterpolationLink(
   this: TokenizeContext,
   effects: Effects,
   ok: State,
-  nok: State
+  nok: State,
 ) {
   const self = this;
   // const markers = 0;
@@ -45,8 +45,9 @@ function tokenizeInterpolationLink(
       effects.enter("dummyEvent");
       effects.consume(code);
       effects.exit("dummyEvent");
-      effects.enter("interpolationlink");
-      effects.enter("interpolationlinkLabel");
+      effects.enter("interpolationLink");
+      effects.enter("interpolationLinkLabel");
+
       return label;
     }
 
@@ -55,7 +56,7 @@ function tokenizeInterpolationLink(
 
   function label(code: Code) {
     if (code === codes.rightSquareBracket) {
-      effects.exit("interpolationlinkLabel");
+      effects.exit("interpolationLinkLabel");
       effects.enter("dummyEvent");
       effects.consume(code);
       effects.exit("dummyEvent");
@@ -78,15 +79,18 @@ function tokenizeInterpolationLink(
       effects.exit("dummyEvent");
       return afterLabel;
     }
+
     if (self.previous === codes.leftParenthesis) {
-      effects.enter("interpolationlinkDestination");
+      effects.enter("interpolationLinkTarget");
       effects.consume(code);
-      return destination;
+
+      return location;
     }
+
     return nok(code);
   }
 
-  function destination(code: Code) {
+  function location(code: Code) {
     if (code === codes.rightParenthesis) {
       // empty parenthesis, no target location
       if (self.previous === codes.leftParenthesis) {
@@ -96,11 +100,12 @@ function tokenizeInterpolationLink(
       // if (startMarker < 2 || endMarker < 2) {
       //   return nok(code);
       // }
-      effects.exit("interpolationlinkDestination");
-      effects.exit("interpolationlink");
+      effects.exit("interpolationLinkTarget");
+      effects.exit("interpolationLink");
       effects.enter("dummyEvent");
       effects.consume(code);
       effects.exit("dummyEvent");
+
       return ok;
     }
 
@@ -110,6 +115,6 @@ function tokenizeInterpolationLink(
 
     effects.consume(code);
 
-    return destination;
+    return location;
   }
 }
