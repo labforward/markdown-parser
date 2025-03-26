@@ -19,7 +19,7 @@ export default {
 };
 function tokenizeInterpolationLink(effects, ok, nok) {
     var self = this;
-    // const markers = 0;
+    var markers = 0;
     return start;
     function start(code) {
         if (code === codes.leftSquareBracket) {
@@ -76,11 +76,34 @@ function tokenizeInterpolationLink(effects, ok, nok) {
             effects.exit("dummyEvent");
             return ok;
         }
+        if (code === codes.leftCurlyBrace) {
+            effects.consume(code);
+            markers += 1;
+            if (markers === 2) {
+                effects.enter("interpolationLinkFormula");
+                return interpolationLinkFormula;
+            }
+            // effects.consume(code);
+            return location;
+        }
         if (isEndOfLine(code) || code === codes.virtualSpace) {
             return nok(code);
         }
         effects.consume(code);
         return location;
+    }
+    function interpolationLinkFormula(code) {
+        if (code === codes.rightCurlyBrace) {
+            // empty formula
+            if (self.previous === codes.leftCurlyBrace) {
+                return nok(code);
+            }
+            effects.exit("interpolationLinkFormula");
+            effects.consume(code);
+            return location;
+        }
+        effects.consume(code);
+        return interpolationLinkFormula;
     }
 }
 //# sourceMappingURL=syntax.js.map

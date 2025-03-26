@@ -36,7 +36,7 @@ function tokenizeInterpolationLink(
   nok: State,
 ) {
   const self = this;
-  // const markers = 0;
+  let markers = 0;
 
   return start;
 
@@ -109,6 +109,21 @@ function tokenizeInterpolationLink(
       return ok;
     }
 
+    if (code === codes.leftCurlyBrace) {
+      effects.consume(code);
+      markers += 1;
+
+      if (markers === 2) {
+        effects.enter("interpolationLinkFormula");
+
+        return interpolationLinkFormula;
+      }
+
+      // effects.consume(code);
+
+      return location;
+    }
+
     if (isEndOfLine(code) || code === codes.virtualSpace) {
       return nok(code);
     }
@@ -116,5 +131,23 @@ function tokenizeInterpolationLink(
     effects.consume(code);
 
     return location;
+  }
+
+  function interpolationLinkFormula(code: Code) {
+    if (code === codes.rightCurlyBrace) {
+      // empty formula
+      if (self.previous === codes.leftCurlyBrace) {
+        return nok(code);
+      }
+
+      effects.exit("interpolationLinkFormula");
+      effects.consume(code);
+
+      return location;
+    }
+
+    effects.consume(code);
+
+    return interpolationLinkFormula;
   }
 }

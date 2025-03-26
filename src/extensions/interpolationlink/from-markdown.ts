@@ -7,6 +7,7 @@ export const enter = {
 
 export const exit = {
   interpolationLink: onExitInterpolationLink,
+  interpolationLinkFormula: onExitInterpolationLinkFormula,
   interpolationLinkLabel: onExitInterpolationLinkLabel,
 };
 
@@ -18,16 +19,24 @@ function onEnterInterpolationLink(this: CompileContext, token: Token) {
       children: [],
       props: {},
     },
-    token
+    token,
   );
 }
 
 function onExitInterpolationLinkLabel(this: CompileContext, token: Token) {
-  const label = this.sliceSerialize(token);
   const link = this.stack[this.stack.length - 1];
+  const label = this.sliceSerialize(token);
 
   // @ts-ignore
   link.props.label = label;
+}
+
+function onExitInterpolationLinkFormula(this: CompileContext, token: Token) {
+  const link = this.stack[this.stack.length - 1];
+  const formula = this.sliceSerialize(token);
+
+  // @ts-ignore
+  link.props.formula = [...(link.props.formula || []), formula];
 }
 
 function onEnterInterpolationLinkTarget(this: CompileContext, token: Token) {
@@ -35,24 +44,27 @@ function onEnterInterpolationLinkTarget(this: CompileContext, token: Token) {
   const raw = this.sliceSerialize(token);
   // const matches = [...raw.matchAll(/{{(.*?)}}/g)];
 
-  const matches = [];
-  const regex = /{{(.*?)}}/g;
-  let match;
+  // @ts-ignore
+  link.props.location = raw;
 
-  // eslint-disable-next-line no-cond-assign
-  while ((match = regex.exec(raw)) !== null) {
-    matches.push(match);
-  }
+  // const matches = [];
+  // const regex = /{{(.*?)}}/g;
+  // let match;
 
-  if (matches.length > 0) {
-    // @ts-ignore
-    link.props = {
-      // @ts-ignore
-      ...link.props,
-      formulas: matches.map((m) => m[1]),
-      location: raw,
-    };
-  }
+  // // eslint-disable-next-line no-cond-assign
+  // while ((match = regex.exec(raw)) !== null) {
+  //   matches.push(match);
+  // }
+
+  // if (matches.length > 0) {
+  //   // @ts-ignore
+  //   link.props = {
+  //     // @ts-ignore
+  //     ...link.props,
+  //     formulas: matches.map((m) => m[1]),
+  //     location: raw,
+  //   };
+  // }
 }
 
 function onExitInterpolationLink(this: CompileContext, token: Token) {

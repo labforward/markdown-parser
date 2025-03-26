@@ -5,10 +5,12 @@ export declare const enter: {
 };
 export declare const exit: {
     interpolationLink: typeof onExitInterpolationLink;
+    interpolationLinkFormula: typeof onExitInterpolationLinkFormula;
     interpolationLinkLabel: typeof onExitInterpolationLinkLabel;
 };
 declare function onEnterInterpolationLink(this: CompileContext, token: Token): void;
 declare function onExitInterpolationLinkLabel(this: CompileContext, token: Token): void;
+declare function onExitInterpolationLinkFormula(this: CompileContext, token: Token): void;
 declare function onEnterInterpolationLinkTarget(this: CompileContext, token: Token): void;
 declare function onExitInterpolationLink(this: CompileContext, token: Token): void;
 export {};
