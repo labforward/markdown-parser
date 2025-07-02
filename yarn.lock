@@ -1232,16 +1232,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*":
-  version: 24.0.8
-  resolution: "@types/node@npm:24.0.8"
-  dependencies:
-    undici-types: "npm:~7.8.0"
-  checksum: afc014193a1a58f545be023bd63a47639f09fddcaaf1ce271ae1b0f700d422aae425f453a8f428d98f772e08cc9bc54815da2b46ace2d1d4362f657c4172065f
-  languageName: node
-  linkType: hard
-
-"@types/node@npm:^24.0.10":
+"@types/node@npm:*, @types/node@npm:^24.0.10":
   version: 24.0.10
   resolution: "@types/node@npm:24.0.10"
   dependencies:
