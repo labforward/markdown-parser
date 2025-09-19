@@ -3,7 +3,7 @@
  * https://jestjs.io/docs/configuration
  */
 /** @type {import('ts-jest').JestConfigWithTsJest} */
-module.exports = {
+export default {
   // Automatically clear mock calls, instances, contexts and results before every test
   clearMocks: true,
   // Which file extensions should be treated as ESModule files
