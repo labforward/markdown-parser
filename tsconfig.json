@@ -4,6 +4,7 @@
     "baseUrl": ".",
     "declaration": true,
     "esModuleInterop": true,
+    "isolatedModules": true,
     "outDir": "dist",
     "paths": {
       "@/*": ["src/*"]
