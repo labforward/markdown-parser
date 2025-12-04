@@ -1,5 +1,5 @@
 {
-  "extends": "@labforward/config/tsconfig.json",
+  "extends": "@laboperator-gmbh/config/tsconfig.json",
   "compilerOptions": {
     "baseUrl": ".",
     "declaration": true,
