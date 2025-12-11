@@ -3,8 +3,8 @@ function factoryCharacters(effects, ok, nok) {
     function charactersWalker(characters) {
         return onCharacterCode;
         function onCharacterCode(code) {
-            var expected = characters[0], nextCharacters = characters.slice(1);
-            if (typeof expected === "function" ? !expected(code) : code !== expected)
+            const [expected, ...nextCharacters] = characters;
+            if (typeof expected === 'function' ? !expected(code) : code !== expected)
                 return nok(code);
             effects.consume(code);
             if (nextCharacters.length)

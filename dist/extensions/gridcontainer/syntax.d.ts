@@ -1,4 +1,4 @@
-import type { Construct } from "micromark-util-types";
+import type { Construct } from 'micromark-util-types';
 declare const _default: {
     document: {
         37: Construct;

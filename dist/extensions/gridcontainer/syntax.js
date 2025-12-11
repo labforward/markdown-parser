@@ -1,32 +1,27 @@
-var _a;
-import { markdownLineEnding, markdownSpace } from "micromark-util-character";
-import { codes } from "micromark-util-symbol";
-import charactersConstruct from "../../extensions/utils/characters-construct.js";
-var gridContainerConstruct = {
+import { markdownLineEnding, markdownSpace } from 'micromark-util-character';
+import { codes } from 'micromark-util-symbol';
+import charactersConstruct from '../../extensions/utils/characters-construct.js';
+const gridContainerConstruct = {
     continuation: {
         tokenize: tokenizeGridContainerContinuation,
     },
     exit: tokenizeGridContainerExit,
-    name: "gridcontainer",
+    name: 'gridcontainer',
     tokenize: tokenizeGridContainer,
 };
 export default {
-    document: (_a = {},
-        _a[codes.percentSign] = gridContainerConstruct,
-        _a),
+    document: {
+        [codes.percentSign]: gridContainerConstruct,
+    },
 };
 function tokenizeGridContainer(effects, ok, nok) {
-    var self = this;
+    const self = this;
     return onGridContainerProbable;
     function onGridContainerProbable(code) {
         if (isGridContainerOpen())
             return nok(code);
-        // For some reason, this cannot be in onGridContainerStart,
-        // as it prevents the character from being consumed in "ok"
-        effects.enter("gridContainer", { _container: true });
-        // Add a temp event for the percent sign so it's not part
-        // of the grid container
-        effects.enter("gridContainerPercentSign");
+        effects.enter('gridContainer', { _container: true });
+        effects.enter('gridContainerPercentSign');
         effects.consume(code);
         return effects.check(charactersConstruct([
             codes.lowercaseC,
@@ -35,16 +30,16 @@ function tokenizeGridContainer(effects, ok, nok) {
         ]), onGridContainerStart, nok);
     }
     function onGridContainerStart(code) {
-        effects.exit("gridContainerPercentSign");
+        effects.exit('gridContainerPercentSign');
         return ok(code);
     }
     function isGridContainerOpen() {
-        for (var index = self.events.length - 1; index >= 0; index -= 1) {
-            var _a = self.events[index], event = _a[0], data = _a[1];
-            if (data.type === "gridContainer") {
-                if (event === "enter")
+        for (let index = self.events.length - 1; index >= 0; index -= 1) {
+            const [event, data] = self.events[index];
+            if (data.type === 'gridContainer') {
+                if (event === 'enter')
                     return true;
-                if (event === "exit")
+                if (event === 'exit')
                     return false;
             }
         }
@@ -52,8 +47,8 @@ function tokenizeGridContainer(effects, ok, nok) {
     }
 }
 function tokenizeGridContainerContinuation(effects, ok, nok) {
-    var self = this;
-    var newlines = 0;
+    const self = this;
+    let newlines = 0;
     return onContinue;
     function onContinue(code) {
         if (markdownLineEnding(self.previous))
@@ -63,10 +58,10 @@ function tokenizeGridContainerContinuation(effects, ok, nok) {
     function countNewLines(code) {
         if (!markdownLineEnding(code))
             return afterNewLines(code);
-        effects.enter("gridContainerNewline");
+        effects.enter('gridContainerNewline');
         newlines += 1;
         effects.consume(code);
-        effects.exit("gridContainerNewline");
+        effects.exit('gridContainerNewline');
         return countNewLines;
     }
     function afterNewLines(code) {
@@ -82,6 +77,6 @@ function tokenizeGridContainerContinuation(effects, ok, nok) {
     }
 }
 function tokenizeGridContainerExit(effects) {
-    effects.exit("gridContainer");
+    effects.exit('gridContainer');
 }
 //# sourceMappingURL=syntax.js.map

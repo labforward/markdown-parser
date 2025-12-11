@@ -1,60 +1,48 @@
-var _a;
-import { codes } from "micromark-util-symbol";
-var validCode = function (code) {
-    return code && /[a-zA-Z0-9=\-_]/.test(String.fromCharCode(code));
-};
-var interpolationConstruct = {
-    name: "interpolation",
+import { codes } from 'micromark-util-symbol';
+const validCode = (code) => code && /[a-zA-Z0-9=\-_]/.test(String.fromCharCode(code));
+const interpolationConstruct = {
+    name: 'interpolation',
     tokenize: tokenizeInterpolation,
 };
 export default {
-    text: (_a = {},
-        _a[codes.exclamationMark] = interpolationConstruct,
-        _a[codes.leftCurlyBrace] = interpolationConstruct,
-        _a),
+    text: {
+        [codes.exclamationMark]: interpolationConstruct,
+        [codes.leftCurlyBrace]: interpolationConstruct,
+    },
 };
 function tokenizeInterpolation(effects, ok, nok) {
-    var type = "interpolation";
-    var markers = 0;
-    var self = this;
-    // We add a dummy event here in order to be able to consume codes
-    effects.enter("interpolationTemp");
+    let type = 'interpolation';
+    let markers = 0;
+    const self = this;
+    effects.enter('interpolationTemp');
     return onInterpolationStart;
     function onInterpolationStart(code) {
         if (code === codes.exclamationMark) {
-            if (type === "bangInterpolation")
+            if (type === 'bangInterpolation')
                 return nok(code);
-            type = "bangInterpolation";
+            type = 'bangInterpolation';
             effects.consume(code);
             return onInterpolationStart;
         }
         if (code === codes.leftCurlyBrace) {
             effects.consume(code);
             markers += 1;
-            // this if statement needs to appear here, because we shouldn't
-            // return the callback without consuming the character
             if (markers === 2) {
-                // Exit the dummy event, enter proper interpolation
-                effects.exit("interpolationTemp");
+                effects.exit('interpolationTemp');
                 effects.enter(type);
                 return onInterpolationFormula;
             }
             return onInterpolationStart;
         }
-        // return nok(code) instead of nok to ensure the wrong
-        // character is also consumed
         return nok(code);
     }
     function onInterpolationFormula(code) {
         if (code === codes.rightCurlyBrace) {
-            // empty formula - return nok
             if (self.previous === codes.leftCurlyBrace) {
                 return nok(code);
             }
-            // When we encounter '}', exit interpolation,
-            // enter the dummy event to consume the character
             effects.exit(type);
-            effects.enter("interpolationTemp");
+            effects.enter('interpolationTemp');
             effects.consume(code);
             return onInterpolationEnd;
         }
@@ -62,8 +50,6 @@ function tokenizeInterpolation(effects, ok, nok) {
             effects.consume(code);
             return onInterpolationFormula;
         }
-        // escaped formula's argument, e.g. {{function\|argument}}
-        // used inside explicit table defintion
         if (code === codes.backslash) {
             effects.consume(code);
             return onInterpolationEscapedFormula;
@@ -78,11 +64,9 @@ function tokenizeInterpolation(effects, ok, nok) {
         return nok(code);
     }
     function onInterpolationEnd(code) {
-        // if the final code is '}', interpolation is complete,
-        // if it is anything else, we abort with nok
         if (code === codes.rightCurlyBrace) {
             effects.consume(code);
-            effects.exit("interpolationTemp");
+            effects.exit('interpolationTemp');
             return ok;
         }
         return nok(code);
