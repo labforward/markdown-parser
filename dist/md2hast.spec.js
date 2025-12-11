@@ -1,17 +1,12 @@
 import { unified } from 'unified';
-
 import { md2hast, preprocessor } from './index.js';
-
-const parse = (raw: string) => {
-  const parser = unified().use(md2hast);
-
-  return parser.runSync(parser.parse(preprocessor(raw)));
+const parse = (raw) => {
+    const parser = unified().use(md2hast);
+    return parser.runSync(parser.parse(preprocessor(raw)));
 };
-
 describe('Markdown', () => {
-  it('supports basic markdown', () => {
-    expect(
-      parse(`# Heading 1
+    it('supports basic markdown', () => {
+        expect(parse(`# Heading 1
 ## Heading 2
 ### Heading 3
 #### Heading 4
@@ -30,7 +25,7 @@ console.log('!');
 * foo
 * bar
 * baz
-  `),
-    ).toMatchSnapshot();
-  });
+  `)).toMatchSnapshot();
+    });
 });
+//# sourceMappingURL=md2hast.spec.js.map

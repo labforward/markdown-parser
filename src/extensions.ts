@@ -1,8 +1,8 @@
-import type { Processor } from "unified";
+import type { Processor } from 'unified';
 
-import * as grid from "./extensions/grid.js";
-import * as gridcontainer from "./extensions/gridcontainer.js";
-import * as interpolation from "./extensions/interpolation.js";
+import * as grid from './extensions/grid.js';
+import * as gridcontainer from './extensions/gridcontainer.js';
+import * as interpolation from './extensions/interpolation.js';
 
 function extensions(this: Processor) {
   const data = this.data();

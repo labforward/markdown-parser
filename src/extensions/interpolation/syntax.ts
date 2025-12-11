@@ -1,15 +1,15 @@
-import { codes } from "micromark-util-symbol";
+import { codes } from 'micromark-util-symbol';
 import type {
   Code,
   Effects,
   State,
   TokenizeContext,
-} from "micromark-util-types";
+} from 'micromark-util-types';
 
 const validCode = (code: Code) =>
   code && /[a-zA-Z0-9=\-_]/.test(String.fromCharCode(code));
 const interpolationConstruct = {
-  name: "interpolation",
+  name: 'interpolation',
   tokenize: tokenizeInterpolation,
 };
 
@@ -26,21 +26,21 @@ function tokenizeInterpolation(
   ok: State,
   nok: State,
 ) {
-  let type: "interpolation" | "bangInterpolation" = "interpolation";
+  let type: 'interpolation' | 'bangInterpolation' = 'interpolation';
   let markers = 0;
 
   const self = this;
 
   // We add a dummy event here in order to be able to consume codes
-  effects.enter("interpolationTemp");
+  effects.enter('interpolationTemp');
 
   return onInterpolationStart;
 
   function onInterpolationStart(code: Code) {
     if (code === codes.exclamationMark) {
-      if (type === "bangInterpolation") return nok(code);
+      if (type === 'bangInterpolation') return nok(code);
 
-      type = "bangInterpolation";
+      type = 'bangInterpolation';
       effects.consume(code);
 
       return onInterpolationStart;
@@ -54,7 +54,7 @@ function tokenizeInterpolation(
       // return the callback without consuming the character
       if (markers === 2) {
         // Exit the dummy event, enter proper interpolation
-        effects.exit("interpolationTemp");
+        effects.exit('interpolationTemp');
         effects.enter(type);
 
         return onInterpolationFormula;
@@ -77,7 +77,7 @@ function tokenizeInterpolation(
       // When we encounter '}', exit interpolation,
       // enter the dummy event to consume the character
       effects.exit(type);
-      effects.enter("interpolationTemp");
+      effects.enter('interpolationTemp');
       effects.consume(code);
 
       return onInterpolationEnd;
@@ -115,7 +115,7 @@ function tokenizeInterpolation(
     // if it is anything else, we abort with nok
     if (code === codes.rightCurlyBrace) {
       effects.consume(code);
-      effects.exit("interpolationTemp");
+      effects.exit('interpolationTemp');
 
       return ok;
     }

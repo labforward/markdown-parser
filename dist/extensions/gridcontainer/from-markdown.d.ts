@@ -1,4 +1,4 @@
-import type { CompileContext, Token } from "mdast-util-from-markdown";
+import type { CompileContext, Token } from 'mdast-util-from-markdown';
 export declare const enter: {
     gridContainer: typeof onEnterGridContainer;
 };

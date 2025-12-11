@@ -1,4 +1,4 @@
-import type { CompileContext, Token } from "mdast-util-from-markdown";
+import type { CompileContext, Token } from 'mdast-util-from-markdown';
 
 export const enter = {
   grid: onEnterGrid,
@@ -10,7 +10,7 @@ export const exit = {
 
 function onEnterGrid(this: CompileContext, token: Token) {
   // @ts-ignore TypeScript has an issue with extending existing types from mdast-util-from-markdown, even though it's permissible within the library
-  this.enter({ children: [], type: "grid" }, token);
+  this.enter({ children: [], type: 'grid' }, token);
 }
 
 function onEnterGridProps(this: CompileContext, token: Token) {
@@ -23,11 +23,11 @@ function onEnterGridProps(this: CompileContext, token: Token) {
     .trim()
     .split(/\s+/)
     .reduce((prev, next) => {
-      let [key, value] = next.split("=");
+      let [key, value] = next.split('=');
 
       if (!value) {
         value = key;
-      } else if (value.startsWith("{") && value.endsWith("}")) {
+      } else if (value.startsWith('{') && value.endsWith('}')) {
         value = value.slice(1, -1);
       }
 

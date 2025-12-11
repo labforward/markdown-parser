@@ -1,6 +1,6 @@
-import { unified } from "unified";
+import { unified } from 'unified';
 
-import { md2hast, preprocessor } from "./index.js";
+import { md2hast, preprocessor } from './index.js';
 
 const parse = (raw: string) => {
   const parser = unified().use(md2hast);
@@ -8,9 +8,9 @@ const parse = (raw: string) => {
   return parser.runSync(parser.parse(preprocessor(raw)));
 };
 
-describe("Markdown extensions", () => {
-  describe("for grid", () => {
-    it("add support for parsing custom grid syntax", () => {
+describe('Markdown extensions', () => {
+  describe('for grid', () => {
+    it('add support for parsing custom grid syntax', () => {
       expect(
         parse(`Before grid
 
@@ -32,7 +32,7 @@ After grid
       ).toMatchSnapshot();
     });
 
-    it("is able to parse grid without any leading or trailing characters", () => {
+    it('is able to parse grid without any leading or trailing characters', () => {
       expect(
         parse(`%col
   left
@@ -42,7 +42,7 @@ After grid
       ).toMatchSnapshot();
     });
 
-    it("is able to parse partially defined grid", () => {
+    it('is able to parse partially defined grid', () => {
       expect(
         parse(`%col
 %col`),
@@ -60,7 +60,7 @@ After grid
       ).toMatchSnapshot();
     });
 
-    it("is able to parse deeply nested grid", () => {
+    it('is able to parse deeply nested grid', () => {
       expect(
         parse(`
 %col
@@ -71,7 +71,7 @@ After grid
       ).toMatchSnapshot();
     });
 
-    it("preserve spaces inside code block", () => {
+    it('preserve spaces inside code block', () => {
       expect(
         parse(`%col
   \`\`\`yml
@@ -100,7 +100,7 @@ After grid
       ).toMatchSnapshot();
     });
 
-    it("ignores incorrect grid like content", () => {
+    it('ignores incorrect grid like content', () => {
       expect(
         parse(`% col
   orful
@@ -113,8 +113,8 @@ After grid
     });
   });
 
-  describe("for interpolation", () => {
-    it("add support for interpolation syntax", () => {
+  describe('for interpolation', () => {
+    it('add support for interpolation syntax', () => {
       expect(
         parse(`Interpolation can stand alone like the following
 
@@ -129,7 +129,7 @@ and appear {{inline|with=argument}} like this
       ).toMatchSnapshot();
     });
 
-    it("add support for bang! interpolation syntax", () => {
+    it('add support for bang! interpolation syntax', () => {
       expect(
         parse(`Bang! Interpolation can stand alone like the following
 
@@ -144,7 +144,7 @@ and appear !{{inline|with=argument}} like this
       ).toMatchSnapshot();
     });
 
-    it("works inside explicit markdown table", () => {
+    it('works inside explicit markdown table', () => {
       expect(
         parse(`
 | {{function|argument}} | {{function|argument|argument}} |
@@ -154,17 +154,17 @@ and appear !{{inline|with=argument}} like this
       ).toMatchSnapshot();
     });
 
-    it("ignores unmatched brackets", () => {
-      expect(parse("{{f}  {f}  {{f !{{f}  !{f}  !{{f")).toMatchSnapshot();
+    it('ignores unmatched brackets', () => {
+      expect(parse('{{f}  {f}  {{f !{{f}  !{f}  !{{f')).toMatchSnapshot();
     });
 
-    it("ignores empty brackets", () => {
-      expect(parse("{{}} !{{}}")).toMatchSnapshot();
+    it('ignores empty brackets', () => {
+      expect(parse('{{}} !{{}}')).toMatchSnapshot();
     });
   });
 
-  describe("backward compatibility", () => {
-    it("support self closing html tag", () => {
+  describe('backward compatibility', () => {
+    it('support self closing html tag', () => {
       expect(
         parse(`<img src="foo.jpg" />
 <br />

@@ -1,4 +1,4 @@
-import type { Code, Effects, State, TokenizeContext } from "micromark-util-types";
+import type { Code, Effects, State, TokenizeContext } from 'micromark-util-types';
 declare const _default: {
     text: {
         33: {
@@ -12,4 +12,4 @@ declare const _default: {
     };
 };
 export default _default;
-declare function tokenizeInterpolation(this: TokenizeContext, effects: Effects, ok: State, nok: State): (code: Code) => /*elided*/ any | undefined;
+declare function tokenizeInterpolation(this: TokenizeContext, effects: Effects, ok: State, nok: State): (code: Code) => any | undefined;
