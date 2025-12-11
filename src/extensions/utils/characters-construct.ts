@@ -1,6 +1,6 @@
-import type { Code, Effects, State } from "micromark-util-types";
+import type { Code, Effects, State } from 'micromark-util-types';
 
-import factoryCharacters from "./factory-characters.js";
+import factoryCharacters from './factory-characters.js';
 
 function charactersConstruct(
   characters: Array<Code | number | ((arg0: Code) => boolean)>,

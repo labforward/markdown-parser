@@ -28,7 +28,7 @@ const disableLazyGrid = (raw: string) => {
           lines.push(next);
         } else {
           stack.pop();
-          if (!afterBlank) lines.push("");
+          if (!afterBlank) lines.push('');
           lines.push(next);
         }
 
@@ -37,19 +37,19 @@ const disableLazyGrid = (raw: string) => {
 
       return lines;
     }, initialLines)
-    .join("\n");
+    .join('\n');
 };
 
 const preprocessor = (raw: string) =>
   disableLazyGrid(raw)
     // self-closing html like <br/> somehow makes every lines which follows afterward
     // be considered part of the html
-    .replace(/<([a-z0-9]*)([^/]*)\/>/g, "<$1$2></$1>")
+    .replace(/<([a-z0-9]*)([^/]*)\/>/g, '<$1$2></$1>')
     // escape hatch to support {{interpolation|argument}} in table
     // by escaping it to {{interpolation\|argument}}
     .replace(
       /(\|\s*{{)((?:[a-zA-Z0-9=\-_]+)(?:\|[a-zA-Z0-9=\-_]+)+)(?=}}\s*\|)/g,
-      (_, prefix, formula) => `${prefix}${formula.split("|").join("\\|")}`,
+      (_, prefix, formula) => `${prefix}${formula.split('|').join('\\|')}`,
     );
 
 export default preprocessor;

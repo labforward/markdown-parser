@@ -1,6 +1,6 @@
-import { unified } from "unified";
+import { unified } from 'unified';
 
-import { md2hast, preprocessor } from "./index.js";
+import { md2hast, preprocessor } from './index.js';
 
 const parse = (raw: string) => {
   const parser = unified().use(md2hast);
@@ -8,8 +8,8 @@ const parse = (raw: string) => {
   return parser.runSync(parser.parse(preprocessor(raw)));
 };
 
-describe("Markdown", () => {
-  it("supports basic markdown", () => {
+describe('Markdown', () => {
+  it('supports basic markdown', () => {
     expect(
       parse(`# Heading 1
 ## Heading 2

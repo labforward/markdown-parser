@@ -1,21 +1,21 @@
-import { markdownLineEnding, markdownSpace } from "micromark-util-character";
-import { codes } from "micromark-util-symbol";
+import { markdownLineEnding, markdownSpace } from 'micromark-util-character';
+import { codes } from 'micromark-util-symbol';
 import type {
   Code,
   Construct,
   Effects,
   State,
   TokenizeContext,
-} from "micromark-util-types";
+} from 'micromark-util-types';
 
-import charactersConstruct from "@/extensions/utils/characters-construct.js";
+import charactersConstruct from '@/extensions/utils/characters-construct.js';
 
 const gridContainerConstruct: Construct = {
   continuation: {
     tokenize: tokenizeGridContainerContinuation,
   },
   exit: tokenizeGridContainerExit,
-  name: "gridcontainer",
+  name: 'gridcontainer',
   tokenize: tokenizeGridContainer,
 };
 
@@ -40,10 +40,10 @@ function tokenizeGridContainer(
 
     // For some reason, this cannot be in onGridContainerStart,
     // as it prevents the character from being consumed in "ok"
-    effects.enter("gridContainer", { _container: true });
+    effects.enter('gridContainer', { _container: true });
     // Add a temp event for the percent sign so it's not part
     // of the grid container
-    effects.enter("gridContainerPercentSign");
+    effects.enter('gridContainerPercentSign');
     effects.consume(code);
 
     return effects.check(
@@ -58,7 +58,7 @@ function tokenizeGridContainer(
   }
 
   function onGridContainerStart(code: Code) {
-    effects.exit("gridContainerPercentSign");
+    effects.exit('gridContainerPercentSign');
     return ok(code);
   }
 
@@ -66,9 +66,9 @@ function tokenizeGridContainer(
     for (let index = self.events.length - 1; index >= 0; index -= 1) {
       const [event, data] = self.events[index];
 
-      if (data.type === "gridContainer") {
-        if (event === "enter") return true;
-        if (event === "exit") return false;
+      if (data.type === 'gridContainer') {
+        if (event === 'enter') return true;
+        if (event === 'exit') return false;
       }
     }
 
@@ -96,10 +96,10 @@ function tokenizeGridContainerContinuation(
   function countNewLines(code: Code) {
     if (!markdownLineEnding(code)) return afterNewLines(code);
 
-    effects.enter("gridContainerNewline");
+    effects.enter('gridContainerNewline');
     newlines += 1;
     effects.consume(code);
-    effects.exit("gridContainerNewline");
+    effects.exit('gridContainerNewline');
 
     return countNewLines;
   }
@@ -116,5 +116,5 @@ function tokenizeGridContainerContinuation(
 }
 
 function tokenizeGridContainerExit(effects: Effects): undefined {
-  effects.exit("gridContainer");
+  effects.exit('gridContainer');
 }
