@@ -2,7 +2,7 @@ import { blankLine } from 'micromark-core-commonmark';
 import { factorySpace } from 'micromark-factory-space';
 import { markdownLineEnding } from 'micromark-util-character';
 import { codes, types } from 'micromark-util-symbol';
-import factoryCharacters from '../../extensions/utils/factory-characters.js';
+import factoryCharacters from '../utils/factory-characters.js';
 const prefixSize = (events) => {
     const tail = events[events.length - 1];
     return tail && tail[1].type === types.linePrefix
